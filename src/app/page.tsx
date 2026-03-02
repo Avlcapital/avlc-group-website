@@ -1,58 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 
-export default function HomePage() {
-  const groupCompanies = [
-    {
-      name: "AVL Capital",
-      description:
-        "Provides excellent, innovative, and credible financial services aimed at empowering clients to build a strong financial base and successful businesses.",
-      logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVLCAPITAL.png?fit=500%2C200&ssl=1",
-    },
-    {
-      name: "Africa Instruments",
-      description:
-        "Acts as a link between local commodity traders and the global market with solutions such as supply chain finance, structured finance, and financial instruments consultancy.",
-      logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AFRICAINSTRUMENTS.png?fit=500%2C200&ssl=1",
-    },
-    {
-      name: "Advance Ventures",
-      description:
-        "Supports accessible funding from investors and channels funds across group companies for each company’s specific growth vision.",
-      logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVL.png?fit=500%2C200&ssl=1",
-    },
-    {
-      name: "Instacash Worldwide Limited",
-      description:
-        "Leverages mobile money platforms to improve how people send and receive money in Africa and beyond.",
-      logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/INSTACASH.png?fit=500%2C200&ssl=1",
-    },
-    {
-      name: "BKY Insurance Agency",
-      description:
-        "Focuses on research, innovation, and process efficiency to deliver differentiated insurance agency solutions beyond standardized products.",
-      logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/BKY.png?fit=500%2C200&ssl=1",
-    },
-    {
-      name: "AVLC Global Consultants",
-      description:
-        "Operates with strong internal controls, monitoring procedures, proper authorizations, backup processes, and contingency planning to support reliable advisory delivery.",
-      logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVLCGLOBAL.png?fit=500%2C200&ssl=1",
-    },
-    {
-      name: "Wasili Kenya (Micro Credit CBO)",
-      description:
-        "Community-based micro credit initiative within the AVLC ecosystem supporting grassroots financial access.",
-      logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVLC.png?fit=500%2C200&ssl=1",
-    },
-    {
-      name: "PSL Capital (Cash Free Bid Bonds)",
-      description:
-        "Provides cash free bid bond support and related credible financial services that help clients execute opportunities without locking up working capital.",
-      logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/PSL.png?fit=500%2C200&ssl=1",
-    },
-  ];
+import { homepageCompanies } from "@/lib/companies";
 
+export default function HomePage() {
   return (
     <div className="space-y-12">
       <section className="avlc-hero motion-fade-up rounded-2xl p-7 text-white shadow-xl sm:p-10">
@@ -68,18 +20,18 @@ export default function HomePage() {
             across high-growth sectors. Discover services, announcements, and key company information in one place.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a
+            <Link
               href="/about-avlc-group"
               className="rounded-md bg-[var(--avlc-gold-500)] px-5 py-3 text-sm font-semibold text-[var(--avlc-navy-900)] transition hover:bg-[var(--avlc-gold-300)]"
             >
               Learn More
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact"
               className="rounded-md border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -101,25 +53,28 @@ export default function HomePage() {
         </div>
 
         <div className="space-y-4">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[var(--avlc-navy-700)]">Group Companies</p>
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[var(--avlc-navy-700)]">Our Companies</p>
           <div className="grid gap-4 md:grid-cols-2">
-            {groupCompanies.map((company, index) => (
+            {homepageCompanies.map((company, index) => (
               <article
                 key={company.name}
                 className="motion-fade-up rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-md"
                 style={{ "--delay": `${180 + index * 70}ms` } as CSSProperties}
               >
-                <div className="mb-4 flex h-20 items-center justify-start rounded-lg bg-slate-50 px-3">
-                  <Image
-                    src={company.logo}
-                    alt={`${company.name} logo`}
-                    width={180}
-                    height={72}
-                    className="h-auto w-auto max-h-14 object-contain"
-                  />
-                </div>
-                <h3 className="text-xl text-[var(--avlc-navy-900)]">{company.name}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{company.description}</p>
+                <Link href={company.href} className="block">
+                  <div className="mb-4 flex h-20 items-center justify-start rounded-lg bg-slate-50 px-3">
+                    <Image
+                      src={company.logo}
+                      alt={`${company.name} logo`}
+                      width={180}
+                      height={72}
+                      className="h-auto w-auto max-h-14 object-contain"
+                    />
+                  </div>
+                  <h3 className="text-xl text-[var(--avlc-navy-900)]">{company.name}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{company.description}</p>
+                  <p className="mt-3 text-sm font-semibold text-[var(--avlc-navy-700)]">Read company profile</p>
+                </Link>
               </article>
             ))}
           </div>
