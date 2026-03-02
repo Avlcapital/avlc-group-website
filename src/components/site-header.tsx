@@ -8,7 +8,7 @@ import { companyNavItems } from "@/lib/companies";
 
 const primaryNav = [
   { href: "/about-avlc-group", label: "About AvlcGroup" },
-  { href: "/services", label: "Services" },
+  { href: "/patented-products", label: "Our Patent Products" },
   { href: "/leadership", label: "Leadership" },
   { href: "/updates", label: "Updates" },
   { href: "/updates", label: "Tender Openings" },
