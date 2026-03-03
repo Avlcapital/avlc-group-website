@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getUpdatesPayload } from "@/lib/updates";
 
 export async function GET() {
-  const payload = getUpdatesPayload();
+  const payload = await getUpdatesPayload();
 
   return NextResponse.json(payload, {
     headers: {

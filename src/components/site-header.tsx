@@ -10,7 +10,6 @@ import { tenderNavItems } from "@/lib/tenders";
 const primaryNav = [
   { href: "/about-avlc-group", label: "About AvlcGroup" },
   { href: "/patented-products", label: "Our Patent Products" },
-  { href: "/leadership", label: "Leadership" },
   { href: "/updates", label: "Updates" },
   { href: "/contact", label: "Contact" },
 ];
@@ -114,7 +113,7 @@ export default function SiteHeader() {
               </div>
             </div>
 
-            {primaryNav.slice(1, 4).map((item) => (
+            {primaryNav.slice(1, 3).map((item) => (
               <Link
                 key={`${item.href}-${item.label}`}
                 href={item.href}
@@ -147,7 +146,7 @@ export default function SiteHeader() {
               </div>
             </div>
 
-            {primaryNav.slice(4).map((item) => (
+            {primaryNav.slice(3).map((item) => (
               <Link
                 key={`${item.href}-${item.label}`}
                 href={item.href}
@@ -204,7 +203,7 @@ export default function SiteHeader() {
               ))}
             </div>
 
-            {primaryNav.slice(1, 4).map((item) => (
+            {primaryNav.slice(1, 3).map((item) => (
               <Link
                 key={`mobile-${item.href}-${item.label}`}
                 href={item.href}
@@ -242,7 +241,7 @@ export default function SiteHeader() {
               ))}
             </div>
 
-            {primaryNav.slice(4).map((item) => (
+            {primaryNav.slice(3).map((item) => (
               <Link
                 key={`mobile-${item.href}-${item.label}`}
                 href={item.href}
