@@ -1,0 +1,72 @@
+[
+  {
+    "id": "rwanda-kagarama-2026-03-02",
+    "title": "Rwanda Kagarama Project Pre-Qualification Open",
+    "summary": "Tender pre-qualification documents for the Kagarama Housing Project are now available in the Rwanda Tender Openings section...",
+    "publishedAt": "2026-03-02",
+    "type": "Tender",
+    "source": "Tender Desk",
+    "status": "Featured",
+    "isPublished": true,
+    "location": "Rwanda",
+    "documentUrl": "http://www.avlc-group.com/wp-content/uploads/2023/08/Pre-qualification-of-contractors-Kagarama-Project-1.pdf"
+  },
+  {
+    "id": "drc-limpamboli-2026-02-26",
+    "title": "DRC Cite Limpamboli Tender Pack Published",
+    "summary": "Contractor pre-qualification and project briefing documents are live for the DRC smart-gated community development.",
+    "publishedAt": "2026-02-26",
+    "type": "Tender",
+    "source": "Project Development Office",
+    "status": "New",
+    "location": "DRC Congo",
+    "documentUrl": "http://www.avlc-group.com/wp-content/uploads/2023/08/Pre-qualification-of-contractors-DRC-Housing-Project.pdf",
+    "isPublished": true
+  },
+  {
+    "id": "bid-bonds-psl-2026-02-20",
+    "title": "Cash Free Bid Bonds Desk Expanded",
+    "summary": "PSL Capital has extended support windows for bid-bond issuance advisory across active procurement cycles.",
+    "publishedAt": "2026-02-20",
+    "type": "Announcement",
+    "source": "PSL Capital",
+    "status": "Published",
+    "location": "East Africa",
+    "externalUrl": "/bid-bonds",
+    "isPublished": true
+  },
+  {
+    "id": "instacash-2026-02-14",
+    "title": "Instacash Transaction Support Upgrade",
+    "summary": "Instacash support desk added enhanced transfer monitoring workflows for high-volume transaction windows.",
+    "publishedAt": "2026-02-14",
+    "type": "Product Launch",
+    "source": "Instacash Operations",
+    "status": "Published",
+    "location": "Regional",
+    "externalUrl": "/instacash",
+    "isPublished": true
+  },
+  {
+    "id": "avlc-consulting-2026-01-29",
+    "title": "AVLC Global Consultants Investor Channel Update",
+    "summary": "Updated guidance released on investment structuring channels and onboarding pathways for strategic partners.",
+    "publishedAt": "2026-01-29",
+    "type": "Partnership",
+    "source": "AVLC Global Consultants",
+    "status": "Published",
+    "location": "Regional",
+    "externalUrl": "/avlc-global-consultants",
+    "isPublished": true
+  },
+  {
+    "id": "compliance-2026-01-15",
+    "title": "Operational Governance Controls Refreshed",
+    "summary": "Internal procedures for transaction monitoring, approvals, and continuity controls were refreshed and documented.",
+    "publishedAt": "2026-01-15",
+    "type": "Compliance",
+    "source": "Group Compliance Office",
+    "status": "Published",
+    "isPublished": true
+  }
+]
