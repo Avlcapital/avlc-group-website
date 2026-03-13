@@ -25,16 +25,16 @@ export type CompanyProfile = {
 export const companyProfiles: Record<string, CompanyProfile> = {
   "avl-capital": {
     slug: "avl-capital",
-    navLabel: "AVL CAPITAL - ADVANCE VENTURES",
-    cardName: "AVL Capital - Advance Ventures",
-    pageTitle: "AVL CAPITAL - ADVANCE VENTURES",
+    navLabel: "AVL CAPITAL",
+    cardName: "AVL Capital",
+    pageTitle: "AVL CAPITAL",
     logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVLCAPITAL.png?fit=500%2C200&ssl=1",
     heroImage: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVL.png?fit=500%2C200&ssl=1",
     introHeading: "WHO WE ARE",
     summary:
-      "AVL CAPITAL LTD is well established in the local market as a private lending company with innovative products and strong growth.",
+      "AVL Capital Limited is a licensed Digital Credit Provider (DCP) regulated by the Central Bank of Kenya, authorized to offer credit through digital and structured financing platforms. The company focuses on delivering customized financial solutions tailored to the evolving needs of individuals and businesses, leveraging technology, data-driven insights, and innovative lending models.",
     intro: [
-      "AVL CAPITAL LTD is well established in the local market as a private lending company. In the last two years we have successfully managed to realize 100% growth in the market as well as introduce innovative products into the market.",
+      "AVL Capital Limited is a licensed Digital Credit Provider (DCP) regulated by the Central Bank of Kenya, authorized to offer credit through digital and structured financing platforms. The company focuses on delivering customized financial solutions tailored to the evolving needs of individuals and businesses, leveraging technology, data-driven insights, and innovative lending models.",
     ],
     sections: [
       {
@@ -183,9 +183,9 @@ export const companyProfiles: Record<string, CompanyProfile> = {
   },
   instacash: {
     slug: "instacash",
-    navLabel: "INSTACASH",
+    navLabel: "INSTACASH WORLDWIDE LIMITED",
     cardName: "Instacash",
-    pageTitle: "INSTACASH",
+    pageTitle: "INSTACASH WORLDWIDE LIMITED",
     logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/INSTACASH.png?fit=500%2C200&ssl=1",
     heroImage: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/INSTACASH.png?fit=500%2C200&ssl=1",
     introHeading: "WHO WE ARE",

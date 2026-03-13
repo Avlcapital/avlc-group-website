@@ -26,7 +26,7 @@ const productCards = [
     name: "PESA NA PESA",
     logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/Pesa-na-Pesa-Logo.jpg?fit=233%2C148&ssl=1",
     summary:
-      "A mobile utility financing platform that gives approved customers instant access to small utility limits directly from their phones.",
+      "Pesa na Pesa™ (PNP) is an innovative mobile phone based digital lending product developed by AVL Capital ltd which offers utility loans to anyone who needs short term funds to pay for their utility bills.",
   },
   {
     name: "BIMA HIMA",
@@ -62,8 +62,8 @@ export default function PatentedProductsPage() {
         <p className="text-xs font-bold uppercase tracking-[0.25em] text-[var(--avlc-navy-700)]">Our Patented Products</p>
         <h1 className="mt-2 text-4xl text-[var(--avlc-navy-900)]">Our Patented Products</h1>
         <p className="mt-4 text-sm leading-7 text-slate-700 sm:text-base">
-          AVLC product lines combine finance, insurance, emergency support, and asset-backed structuring to deliver practical
-          solutions for individuals and businesses across the region.
+          AVLC’s product lines are designed to deliver integrated financial solutions that combine finance, insurance protection, emergency liquidity support, and structured solutions to address real-world financial needs. 
+          These patented and proprietary products are built to serve individuals, SMEs, and corporate clients across the region, enabling access to capital while supporting resilience, business growth, and financial stability.
         </p>
       </section>
 
@@ -176,9 +176,7 @@ export default function PatentedProductsPage() {
         <article className="space-y-3">
           <h2 className="text-2xl text-[var(--avlc-navy-900)]">PESA NA PESA</h2>
           <p className="text-sm leading-7 text-slate-700 sm:text-base">
-            Pesa na Pesa (PNP) is a mobile-based utility financing platform designed to help customers settle essential services
-            quickly through their phones. Once a customer qualifies, the system allocates a utility limit that can be used to pay
-            approved providers instantly without going through a manual branch process.
+            Pesa na Pesa™ (PNP) is an innovative mobile phone based digital lending product developed by AVL Capital ltd which offers utility loans to anyone who needs short term funds to pay for their utility bills.
           </p>
           <p className="text-sm leading-7 text-slate-700 sm:text-base">
             The platform combines a USSD access layer, CRB-based credit scoring, MPESA payments, utility-provider integrations,
