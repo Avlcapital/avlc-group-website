@@ -5,6 +5,7 @@ import {
   ADMIN_COOKIE_NAME,
 } from "@/lib/admin-auth";
 import { cleanupExpiredSessions, createAdminSession, findAdminUserByUsername } from "@/lib/admin-users";
+import { pingMongo } from "@/lib/mongodb";
 
 export const runtime = "nodejs";
 
@@ -21,13 +22,17 @@ export async function POST(request: NextRequest) {
     const username = payload?.username?.trim() || "";
     const password = payload?.password || "";
 
+    await pingMongo();
+
     const user = await findAdminUserByUsername(username);
     if (!user) {
+      console.warn("Admin login rejected: user not found", { username });
       return NextResponse.json({ error: "Invalid admin credentials." }, { status: 401 });
     }
 
     const validPassword = await compare(password, user.passwordHash);
     if (!validPassword) {
+      console.warn("Admin login rejected: password mismatch", { username });
       return NextResponse.json({ error: "Invalid admin credentials." }, { status: 401 });
     }
 
@@ -46,7 +51,12 @@ export async function POST(request: NextRequest) {
     });
     return response;
   } catch (error) {
-    console.error("Admin login failed", error);
+    console.error("Admin login failed", {
+      message: error instanceof Error ? error.message : "Unknown error",
+      stack: error instanceof Error ? error.stack : undefined,
+      hasMongoUri: Boolean(process.env.MONGODB_URI),
+      mongoDb: process.env.MONGODB_DB || "avlc_group_website",
+    });
     return NextResponse.json(
       { error: "Admin login failed. Check MongoDB connection, database records, and deployment environment variables." },
       { status: 500 },
