@@ -25,3 +25,8 @@ export async function getMongoDb(): Promise<Db> {
   const dbName = process.env.MONGODB_DB || "avlc_group_website";
   return client.db(dbName);
 }
+
+export async function pingMongo(): Promise<void> {
+  const db = await getMongoDb();
+  await db.command({ ping: 1 });
+}
