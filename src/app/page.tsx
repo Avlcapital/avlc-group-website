@@ -17,7 +17,7 @@ export default function HomePage() {
           </h1>
           <p className="max-w-2xl text-sm leading-7 text-white/85 sm:text-base">
             We support institutional clients with corporate structuring, advisory, compliance support, and execution
-            across high-growth sectors. Discover services, announcements, and key company information in one place.
+            across high-growth sectors. 
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -40,7 +40,7 @@ export default function HomePage() {
         <div id="group-companies" className="space-y-4">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-[var(--avlc-navy-700)]">Welcome to AVLC Group</p>
           <h2 className="text-3xl leading-tight text-[var(--avlc-navy-900)] sm:text-4xl">
-            A trusted strategic platform for enterprise advancement.
+            A trusted strategic partner for enterprise advancement.
           </h2>
           <p className="text-sm leading-7 text-slate-700 sm:text-base">
             Our team combines financial insight, execution capability, and regional knowledge to deliver practical
@@ -89,8 +89,11 @@ export default function HomePage() {
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-[var(--avlc-navy-700)]">Introduction</p>
           <h2 className="text-3xl text-[var(--avlc-navy-900)] sm:text-4xl">AVLC Group</h2>
           <p className="text-sm leading-7 text-slate-700 sm:text-base">
-            <strong>AVLC GROUP</strong> is a ONE STOP FINANCIAL SHOP. It comprises of eight financial companies that
-            fulfill all the aspects of financial growth in respect to our client&apos;s businesses.
+            <strong>AVLC GROUP</strong> AVLC Group is a reputable boutique finance firm offering a comprehensive range of financial solutions within the mezzanine space. The group comprises of 8 registered companies all working together to provide great products and solutions that are progressive and innovative whilst providing unrivalled customer service. We believe that our innovativeness and passion for mutual success puts us ahead of the pack. 
+
+            Our Vision is to provide a one stop shop for all financial needs through structured and customized finance solutions across East Africa and beyond. This vision is driven by the following <br/>
+            KEY STRATEGY: Customization - Creating products as per the greater well researched market demand.
+
           </p>
         </div>
 

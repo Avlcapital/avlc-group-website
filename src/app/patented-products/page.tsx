@@ -26,7 +26,7 @@ const productCards = [
     name: "PESA NA PESA",
     logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/Pesa-na-Pesa-Logo.jpg?fit=233%2C148&ssl=1",
     summary:
-      "An innovative mobile phone based borrowing and lending product developed by AVL Capital ltd for short-term utility financing.",
+      "Pesa na Pesa™ (PNP) is an innovative mobile phone based digital lending product developed by AVL Capital ltd which offers utility loans to anyone who needs short term funds to pay for their utility bills.",
   },
   {
     name: "BIMA HIMA",
@@ -62,8 +62,8 @@ export default function PatentedProductsPage() {
         <p className="text-xs font-bold uppercase tracking-[0.25em] text-[var(--avlc-navy-700)]">Our Patented Products</p>
         <h1 className="mt-2 text-4xl text-[var(--avlc-navy-900)]">Our Patented Products</h1>
         <p className="mt-4 text-sm leading-7 text-slate-700 sm:text-base">
-          AVLC product lines combine finance, insurance, emergency support, and asset-backed structuring to deliver practical
-          solutions for individuals and businesses across the region.
+          AVLC’s product lines are designed to deliver integrated financial solutions that combine finance, insurance protection, emergency liquidity support, and structured solutions to address real-world financial needs. 
+          These patented and proprietary products are built to serve individuals, SMEs, and corporate clients across the region, enabling access to capital while supporting resilience, business growth, and financial stability.
         </p>
       </section>
 
@@ -176,15 +176,59 @@ export default function PatentedProductsPage() {
         <article className="space-y-3">
           <h2 className="text-2xl text-[var(--avlc-navy-900)]">PESA NA PESA</h2>
           <p className="text-sm leading-7 text-slate-700 sm:text-base">
-            Pesa na Pesa is an innovative mobile phone based borrowing and lending product developed by AVL Capital ltd which offers
-            utility loans to anyone who needs short term funds to pay for bills. It is a facility payable within 30 days for amounts
-            up to Kes. 5,000.
+            Pesa na Pesa™ (PNP) is an innovative mobile phone based digital lending product developed by AVL Capital ltd which offers utility loans to anyone who needs short term funds to pay for their utility bills.
           </p>
-          <ul className="list-disc space-y-2 pl-5 text-sm leading-7 text-slate-700 sm:text-base">
-            <li>Registration: Dial *483*118# and follow the system prompts with correct signup details.</li>
-            <li>Borrowing: Dial *483*118#, enter your PIN, and proceed to pay for bill in the menu.</li>
-            <li>Repayments: Dial *483*118# and select Pay Loan. Limit restores automatically after clearance.</li>
-          </ul>
+          <p className="text-sm leading-7 text-slate-700 sm:text-base">
+            The platform combines a USSD access layer, CRB-based credit scoring, MPESA payments, utility-provider integrations,
+            automated repayment tracking, and SMS notifications into one simple financing workflow.
+          </p>
+          <div className="space-y-3">
+            <h3 className="text-xl text-[var(--avlc-navy-900)]">Customer Registration Process</h3>
+            <ul className="list-disc space-y-2 pl-5 text-sm leading-7 text-slate-700 sm:text-base">
+              <li>Dial `*519*25#` and follow the registration prompts.</li>
+              <li>Enter your National ID number and full names exactly as they appear on the ID.</li>
+              <li>Consent to CreditInfo CRB assessment for utility-limit allocation.</li>
+              <li>Accept the terms and conditions at `https://bit.ly/4tc1mJN`.</li>
+              <li>Pay the registration fee of KES 100 through MPESA.</li>
+              <li>The system runs a CRB check and assigns a utility limit based on the rating, typically KES 200, 300, or 500.</li>
+              <li>A confirmation SMS is sent whether registration is approved or unsuccessful.</li>
+            </ul>
+          </div>
+          <div className="space-y-3">
+            <h3 className="text-xl text-[var(--avlc-navy-900)]">Utility Limit Usage Flow</h3>
+            <ul className="list-disc space-y-2 pl-5 text-sm leading-7 text-slate-700 sm:text-base">
+              <li>Dial `*519*25#` and select the borrowing option.</li>
+              <li>Choose the service provider, including KPLC, Nairobi Water, DSTV, GOTV, ZUKU, or STARTIMES.</li>
+              <li>Enter the correct utility account number.</li>
+              <li>The approved amount is deducted from the utility limit and credited directly to the selected provider.</li>
+              <li>The customer receives an SMS confirming the utility payment transaction.</li>
+            </ul>
+          </div>
+          <div className="space-y-3">
+            <h3 className="text-xl text-[var(--avlc-navy-900)]">Repayment And Notifications</h3>
+            <p className="text-sm leading-7 text-slate-700 sm:text-base">
+              Repayment is made through Paybill `990390`, using the customer phone number as the account number. Loan notices
+              communicate the principal amount, interest, total due, and repayment deadline.
+            </p>
+            <ul className="list-disc space-y-2 pl-5 text-sm leading-7 text-slate-700 sm:text-base">
+              <li>Registration outcome and approved limit notifications</li>
+              <li>Utility usage and provider-credit confirmations</li>
+              <li>Loan details with repayment instructions</li>
+              <li>Two-week reminder and due-date reminder messages</li>
+              <li>Payment-success confirmation with limit restoration notice</li>
+              <li>Overdue alerts and penalty notifications where applicable</li>
+            </ul>
+          </div>
+          <div className="space-y-3">
+            <h3 className="text-xl text-[var(--avlc-navy-900)]">Compliance And Risk Controls</h3>
+            <ul className="list-disc space-y-2 pl-5 text-sm leading-7 text-slate-700 sm:text-base">
+              <li>Explicit customer consent is required before CRB checks are performed.</li>
+              <li>Cost disclosures are surfaced clearly as part of onboarding and borrowing flows.</li>
+              <li>Penalty calculations are automated to support consistency and transparency.</li>
+              <li>Utility limits are only restored after full repayment has been completed.</li>
+              <li>Credit scoring is handled through CreditInfo CRB integration.</li>
+            </ul>
+          </div>
           <a
             href="http://www.avlc-group.com/wp-content/uploads/2021/08/PNP-TERMS-AND-CONDITIONS.pdf"
             target="_blank"

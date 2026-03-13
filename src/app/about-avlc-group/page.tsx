@@ -60,16 +60,14 @@ export default function AboutAvlcGroupPage() {
         <h1 className="mt-2 text-4xl text-[var(--avlc-navy-900)]">About AvlcGroup</h1>
         <div className="mt-5 space-y-4 text-sm leading-7 text-slate-700 sm:text-base">
           <p>
-            <strong>AVLC GROUP</strong> is a ONE STOP FINANCIAL SHOP. It comprises of eight financial companies that
-            fulfill all the aspects of financial growth in respect to our client&apos;s businesses.
+            <strong>AVLC Group </strong> is a reputable boutique finance firm offering a comprehensive range of financial solutions within the mezzanine space. 
+            The group comprises of 8 registered companies all working together to provide great products and solutions that are progressive and innovative whilst providing unrivalled customer service. 
+            We believe that our innovativeness and passion for mutual success puts us ahead of the pack. 
           </p>
+
           <p>
-            We believe that innovation is the key to a leading team and we know that nothing great has ever been
-            accomplished without passion.
-          </p>
-          <p>
-            <strong>AVLC GROUP</strong> business doctrine is not just doing great deals; it is having great products,
-            doing great engineering and providing tremendous services to customers.
+            Our Vision is to provide a one stop shop for all financial needs through structured and customized finance solutions across East Africa and beyond. 
+            This vision is driven by the following <br/> KEY STRATEGY: Customization - Creating products as per the greater well researched market demand.
           </p>
         </div>
       </section>
@@ -78,8 +76,7 @@ export default function AboutAvlcGroupPage() {
         <article className="rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-7 shadow-sm sm:p-8">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-[var(--avlc-navy-700)]">Vision</p>
           <p className="mt-3 text-sm leading-7 text-slate-700 sm:text-base">
-            <strong>AVLC GROUP VISION</strong> is to provide a one stop shop for all financial needs across East
-            Africa and beyond.
+            <strong>AVLC GROUP VISION </strong> is to provide a one stop shop for all financial needs though structured and customized finance solutions across East Africa and beyond. 
           </p>
           <p className="mt-4 text-xs font-bold uppercase tracking-[0.25em] text-[var(--avlc-navy-700)]">Key Strategy</p>
           <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-7 text-slate-700 sm:text-base">
