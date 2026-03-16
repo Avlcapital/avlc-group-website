@@ -50,10 +50,22 @@ if (!uri) {
   process.exit(1);
 }
 
+const normalizedUri = uri.trim().replace(/^['"]|['"]$/g, "");
+if (!normalizedUri.startsWith("mongodb://") && !normalizedUri.startsWith("mongodb+srv://")) {
+  console.error("MONGODB_URI must start with mongodb:// or mongodb+srv://");
+  process.exit(1);
+}
+
 const role = roleArg === "editor" ? "editor" : "super_admin";
 const username = usernameArg.trim().toLowerCase();
 
-const client = new MongoClient(uri);
+const client = new MongoClient(normalizedUri, {
+  family: 4,
+  tls: true,
+  retryWrites: true,
+  serverSelectionTimeoutMS: 10000,
+  connectTimeoutMS: 10000,
+});
 await client.connect();
 
 try {
