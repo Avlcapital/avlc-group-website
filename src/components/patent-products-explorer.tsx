@@ -9,180 +9,171 @@ type ProductCard = {
   summary: string;
 };
 
-type ProductDetail = {
-  intro: string[];
-  sections: Array<{
-    title: string;
-    paragraphs?: string[];
-    bullets?: string[];
-  }>;
-};
-
 const productCards: ProductCard[] = [
   {
     name: "ASSET RECOVERY",
-    logo: "/assets/patented-products/asset-recovery.jpg",
+    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/istockphoto-1198189076-612x612-1.jpg?resize=158%2C59",
     summary:
-      "One of our key services is the facilitation of asset recovery and reunification, where AVLC acts as a trusted intermediary between asset-holding institutions and clients.",
+      "A structured recovery and reunification service that helps clients reclaim eligible assets through a guided process.",
   },
   {
     name: "CHILD GUARD",
-    logo: "/assets/patented-products/child-guard.jpg",
+    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/Child-Guard-Logo.jpg?fit=185%2C118&ssl=1",
     summary:
-      "A partnership with E-plus Emergency Medical services and Flying Doctors Society of Africa powered by BKY Insurance Agency Limited.",
+      "Emergency-response cover for children delivered through specialized medical and insurance partnerships.",
   },
   {
     name: "LIFESTYLE LADY",
-    logo: "/assets/patented-products/lifestyle-lady.jpg",
+    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/Lifestyle-Lady-Logo.jpg?fit=194%2C126&ssl=1",
     summary:
-      "Insurance policy targeted to the modern lady that covers beyond basics, including valuables and subsidized partner offers.",
+      "A modern insurance proposition designed around lifestyle risks, valuables protection, and partner benefits.",
   },
   {
     name: "PESA NA PESA",
-    logo: "/assets/patented-products/pesa-na-pesa.jpg",
+    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/Pesa-na-Pesa-Logo.jpg?fit=233%2C148&ssl=1",
     summary:
-      "Pesa na Pesa is a mobile utility financing platform that helps approved customers pay essential service bills through an allocated utility limit.",
+      "A mobile utility financing platform that gives approved customers instant access to small utility limits directly from their phones.",
   },
   {
     name: "BIMA HIMA",
-    logo: "/assets/patented-products/bima-hima.jpg",
+    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/09/IMG-20210924-WA0001.jpg?fit=628%2C218&ssl=1",
     summary:
-      "A platform that eases the burden of paying insurance premiums in manageable installments.",
+      "An installment-based insurance premium support platform built to make cover more affordable and manageable.",
   },
   {
     name: "LANDBANK SOLUTION",
-    logo: "/assets/companies/avlc-global.png",
+    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVLCGLOBAL.png?fit=500%2C200&ssl=1",
     summary:
-      "Consultative structuring that facilitates security using land and other assets to unlock cash flows and business growth.",
+      "A consultative structuring solution that helps unlock land and asset-backed security for business growth.",
   },
 ];
 
-const productDetails: Record<string, ProductDetail> = {
+const productDetails: Record<string, { intro: string[]; sections: Array<{ title: string; bullets?: string[]; paragraphs?: string[] }> }> = {
   "ASSET RECOVERY": {
     intro: [
-      "Asset Recovery and reunification is designed to help rightful owners recover unclaimed assets through a guided and documented process.",
-      "AVLC acts as a trusted intermediary between clients, asset-holding institutions, and the relevant authority so the process is managed with structure and speed.",
+      "Asset Recovery is designed to help rightful owners reclaim eligible unclaimed assets through a guided, documentation-led process.",
+      "AVLC supports verification, paperwork handling, and structured engagement with asset holders and the relevant authority.",
     ],
     sections: [
       {
-        title: "What AVLC Handles",
+        title: "Key Service Areas",
         bullets: [
-          "Preparation and handling of the required paperwork on behalf of the client",
-          "Engagement with asset holders and financial institutions to obtain verification documents",
-          "Follow-up and submission support with the Unclaimed Financial Assets Authority",
+          "Client paperwork support and approvals coordination",
+          "Verification with institutions holding the asset",
+          "Submission support and fast-tracking with UFAA",
         ],
       },
       {
-        title: "Process Flow",
+        title: "Process",
         paragraphs: [
-          "The process generally moves through agreement execution, ownership verification, submission to UFAA, review, approval, and final transfer.",
-          "Depending on the arrangement, recovered assets may be transferred directly to the client or through an escrow and paymaster structure.",
+          "The service typically moves through application, ownership verification, document submission, review, approval, and asset transfer stages.",
+          "Depending on the case structure, transfer may be direct to the client or routed through an escrow-supported arrangement.",
         ],
       },
     ],
   },
   "CHILD GUARD": {
     intro: [
-      "Child Guard focuses on one urgent need: making sure a child can access timely emergency medical support when a parent or guardian cannot intervene immediately.",
-      "The product is powered through a partnership between emergency response providers and BKY Insurance Agency Limited.",
+      "Child Guard is built around one practical concern: timely emergency assistance when a parent or guardian cannot physically intervene immediately.",
+      "It combines emergency medical response capability with insurance-backed support so that a child can access urgent care faster in a crisis.",
     ],
     sections: [
       {
-        title: "Core Idea",
+        title: "What It Offers",
         bullets: [
-          "Emergency medical assistance support for children",
-          "Insurance-backed response arrangement",
-          "Practical family-focused continuity cover",
+          "Emergency support orientation for children",
+          "Medical-response partnership model",
+          "Insurance-backed support structure",
         ],
       },
     ],
   },
   "LIFESTYLE LADY": {
     intro: [
-      "Lifestyle Lady is tailored to the modern woman and extends beyond standard insurance expectations.",
-      "The product combines motor protection with cover for selected personal valuables and access to lifestyle partner benefits.",
+      "Lifestyle Lady is an insurance product tailored to the realities of a modern female customer, extending beyond standard motor cover.",
+      "The product includes protection for selected valuables and access to partner-driven lifestyle benefits.",
     ],
     sections: [
       {
-        title: "Highlights",
+        title: "Coverage Direction",
         bullets: [
-          "Protection that goes beyond standard vehicle cover",
-          "Support for items such as phones, handbags, and similar valuables",
-          "Access to subsidized offers through partner outlets",
+          "Motor protection with broader practical benefits",
+          "Support for valuables such as phones and handbags",
+          "Partner offers in beauty, shopping, and lifestyle outlets",
         ],
       },
       {
         title: "Customer Experience",
         paragraphs: [
-          "Physical registration is completed once for compliance, after which ongoing use is supported through mobile-based transactions.",
+          "The service is structured for convenience, with physical registration completed once and later interactions supported through mobile-based transactions.",
         ],
       },
     ],
   },
   "PESA NA PESA": {
     intro: [
-      "Pesa na Pesa is a mobile-based utility financing platform that allows approved customers to access an allocated utility limit and settle essential bills instantly through their phones.",
-      "The solution brings together USSD access, CreditInfo CRB scoring, MPESA payments, provider integrations, repayment tracking, and SMS notifications in one workflow.",
+      "Pesa na Pesa (PNP) is a mobile-based utility financing platform that allows approved customers to access a utility limit and pay essential services instantly by phone.",
+      "The platform combines USSD access, CreditInfo CRB scoring, MPESA payments, utility integrations, SMS notifications, and automated repayment tracking into one flow.",
     ],
     sections: [
       {
         title: "Registration Flow",
         bullets: [
           "Dial *519*25# and complete the registration prompts",
-          "Enter ID details and full names exactly as they appear on the ID",
-          "Consent to CRB assessment and accept the terms and conditions",
-          "Pay the KES 100 registration fee via MPESA",
-          "Receive a utility limit allocation based on the resulting credit score",
+          "Submit ID details and names exactly as they appear on the ID",
+          "Consent to CRB scoring and accept terms and conditions",
+          "Pay the KES 100 registration fee through MPESA",
+          "Receive a utility limit allocation based on credit rating",
         ],
       },
       {
-        title: "Utility Usage",
+        title: "Usage And Repayment",
         bullets: [
           "Select a provider such as KPLC, Nairobi Water, DSTV, GOTV, ZUKU, or STARTIMES",
-          "Enter the correct utility account number",
-          "Have the approved amount credited directly to the selected provider",
-          "Receive SMS confirmation for the payment transaction",
+          "Enter the utility account number and trigger direct provider payment",
+          "Repay through Paybill 990390 using the phone number as the account number",
+          "Receive SMS updates for registration, usage, reminders, repayment, and overdue events",
         ],
       },
       {
-        title: "Repayment And Controls",
+        title: "Risk And Compliance Controls",
         bullets: [
-          "Repay via Paybill 990390 using the customer phone number as the account number",
-          "Receive SMS updates for registration outcome, loan details, reminders, and repayment",
-          "Benefit from transparent cost disclosure and automated limit restoration after full repayment",
-          "Operate under explicit consent requirements for CRB checks and structured penalty handling",
+          "Explicit consent before CRB checks",
+          "Transparent cost disclosure",
+          "Automated penalty handling",
+          "Limit restoration only after full repayment",
         ],
       },
     ],
   },
   "BIMA HIMA": {
     intro: [
-      "BIMA HIMA makes large insurance premium payments easier to manage by turning them into a more accessible installment-based arrangement.",
-      "The platform is designed to improve affordability while keeping access to insurance cover practical and simple.",
+      "BIMA HIMA is a premium-financing support platform that makes large insurance premium payments easier to manage.",
+      "It is designed to spread payment pressure and improve access to insurance cover for both individuals and business clients.",
     ],
     sections: [
       {
         title: "Key Benefits",
         bullets: [
-          "Monthly installment repayment approach",
+          "Monthly installment approach instead of one large upfront premium",
           "Flexible financing terms",
-          "Fast processing with competitive pricing",
+          "Faster processing and competitive pricing",
         ],
       },
     ],
   },
   "LANDBANK SOLUTION": {
     intro: [
-      "LandBank Solution helps structure security using land and related assets so borrowers can unlock financing opportunities.",
-      "AVLC supports the transaction by connecting the parties, shaping the structure, and securing the interests of both sides.",
+      "LandBank Solution helps structure security arrangements using land and other qualifying assets so borrowers can unlock financing opportunities.",
+      "AVLC's role is consultative and structuring-focused, connecting parties and securing the commercial interests of each side.",
     ],
     sections: [
       {
-        title: "How It Helps",
+        title: "Use Case",
         bullets: [
-          "Supports land-backed security structuring",
-          "Connects borrowers with third-party landowners where needed",
-          "Helps unlock capital for business expansion and cash-flow support",
+          "Land-backed security structuring",
+          "Support for borrowers seeking third-party collateral support",
+          "Business growth facilitation through unlocked asset value",
         ],
       },
     ],

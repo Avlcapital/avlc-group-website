@@ -27,6 +27,7 @@ export default function PatentedProductsPage() {
           These patented and proprietary products are built to serve individuals, SMEs, and corporate clients across the region, enabling access to capital while supporting resilience, business growth, and financial stability.
         </p>
       </section>
+
       <PatentProductsExplorer />
 
       <section className="space-y-8 rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-7 shadow-sm sm:p-8">
