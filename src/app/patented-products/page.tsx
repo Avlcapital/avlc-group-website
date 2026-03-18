@@ -44,7 +44,7 @@ export default function PatentedProductsPage() {
             ))}
           </ul>
           <a
-            href="https://acrobat.adobe.com/id/urn:aaid:sc:eu:c4a3c8e0-9d76-4a75-bce1-3c717fc7600d"
+            href="/assets/documents/asset-recovery/avlc-asset-recovery-application-form.pdf"
             target="_blank"
             rel="noreferrer"
             className="inline-flex rounded-md bg-[var(--avlc-primary)] px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)] transition hover:brightness-95"
@@ -181,7 +181,7 @@ export default function PatentedProductsPage() {
             </ul>
           </div>
           <a
-            href="http://www.avlc-group.com/wp-content/uploads/2021/08/PNP-TERMS-AND-CONDITIONS.pdf"
+            href="/assets/documents/patented-products/pesa-na-pesa-terms-and-conditions.pdf"
             target="_blank"
             rel="noreferrer"
             className="inline-flex rounded-md bg-[var(--avlc-primary)] px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)] transition hover:brightness-95"
@@ -202,7 +202,7 @@ export default function PatentedProductsPage() {
             <li>Access by dialing *483*01#.</li>
           </ul>
           <a
-            href="http://www.avlc-group.com/wp-content/uploads/2021/09/BIMA-HIMA-Terms-and-Conditions.pdf"
+            href="/assets/documents/patented-products/bima-hima-terms-and-conditions.pdf"
             target="_blank"
             rel="noreferrer"
             className="inline-flex rounded-md bg-[var(--avlc-primary)] px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)] transition hover:brightness-95"
