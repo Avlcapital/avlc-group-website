@@ -28,8 +28,8 @@ export const companyProfiles: Record<string, CompanyProfile> = {
     navLabel: "AVL CAPITAL",
     cardName: "AVL Capital",
     pageTitle: "AVL CAPITAL",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVLCAPITAL.png?fit=500%2C200&ssl=1",
-    heroImage: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVL.png?fit=500%2C200&ssl=1",
+    logo: "/assets/companies/avlcapital.png",
+    heroImage: "/assets/companies/avlcapital-hero.png",
     introHeading: "WHO WE ARE",
     summary:
       "AVL Capital Limited is a licensed Digital Credit Provider (DCP) regulated by the Central Bank of Kenya, authorized to offer credit through digital and structured financing platforms. The company focuses on delivering customized financial solutions tailored to the evolving needs of individuals and businesses, leveraging technology, data-driven insights, and innovative lending models.",
@@ -95,8 +95,8 @@ export const companyProfiles: Record<string, CompanyProfile> = {
     navLabel: "AFRICA INSTRUMENTS",
     cardName: "Africa Instruments",
     pageTitle: "AFRICA INSTRUMENTS",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AFRICAINSTRUMENTS.png?fit=500%2C200&ssl=1",
-    heroImage: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AFRICAINSTRUMENTS.png?fit=500%2C200&ssl=1",
+    logo: "/assets/companies/africa-instruments.png",
+    heroImage: "/assets/companies/africa-instruments.png",
     introHeading: "WHO WE ARE",
     summary:
       "Africa Instruments has been established as a link between local commodity traders and the global market.",
@@ -124,8 +124,8 @@ export const companyProfiles: Record<string, CompanyProfile> = {
     navLabel: "AVLC GLOBAL CONSULTANTS",
     cardName: "AVLC Global Consultants",
     pageTitle: "AVLC GLOBAL CONSULTANTS",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVLCGLOBAL.png?fit=500%2C200&ssl=1",
-    heroImage: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVLCGLOBAL.png?fit=500%2C200&ssl=1",
+    logo: "/assets/companies/avlc-global.png",
+    heroImage: "/assets/companies/avlc-global.png",
     introHeading: "WHO WE ARE",
     summary:
       "AVLC Global Consultants Limited is a regional consultancy firm with proven expertise in financial structuring, institutional capacity building, and advisory services.",
@@ -149,8 +149,8 @@ export const companyProfiles: Record<string, CompanyProfile> = {
     navLabel: "BKY INSURANCE AGENCY",
     cardName: "BKY Insurance Agency",
     pageTitle: "BKY INSURANCE AGENCY",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/BKY.png?fit=500%2C200&ssl=1",
-    heroImage: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/BKY.png?fit=500%2C200&ssl=1",
+    logo: "/assets/companies/bky.png",
+    heroImage: "/assets/companies/bky.png",
     introHeading: "WHO WE ARE",
     summary:
       "BKY Insurance Agencies is a licensed agency with IRA and an affiliate company of AVLC Group.",
@@ -186,8 +186,8 @@ export const companyProfiles: Record<string, CompanyProfile> = {
     navLabel: "INSTACASH WORLDWIDE LIMITED",
     cardName: "Instacash",
     pageTitle: "INSTACASH WORLDWIDE LIMITED",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/INSTACASH.png?fit=500%2C200&ssl=1",
-    heroImage: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/INSTACASH.png?fit=500%2C200&ssl=1",
+    logo: "/assets/companies/instacash.png",
+    heroImage: "/assets/companies/instacash.png",
     introHeading: "WHO WE ARE",
     summary:
       "InstaCash World Wide was incorporated in 2007 in Nairobi Kenya as a constituent of AVLC group of Companies.",
@@ -223,8 +223,8 @@ export const companyProfiles: Record<string, CompanyProfile> = {
     navLabel: "Cash Free Bid Bonds by PSL Capital",
     cardName: "Cash Free Bid Bonds by PSL Capital",
     pageTitle: "Cash Free Bid Bonds by PSL Capital",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/PSL.png?fit=500%2C200&ssl=1",
-    heroImage: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/PSL.png?fit=500%2C200&ssl=1",
+    logo: "/assets/companies/psl.png",
+    heroImage: "/assets/companies/psl.png",
     introHeading: "Bid Bonds and Guarantee needs simplified",
     summary:
       "Bid Bonds and Guarantee needs simplified by PSL CAPITAL LIMITED, a subsidiary firm of AVLC GROUP.",
@@ -294,7 +294,7 @@ export const companyProfiles: Record<string, CompanyProfile> = {
     ],
     downloadCta: {
       label: "PSL Bid Bond Request form (2022)",
-      href: "http://www.avlc-group.com/wp-content/uploads/2023/08/PSL-Bid-Bond-Request-form-2022.pdf",
+      href: "/assets/documents/companies/psl-bid-bond-request-form-2022.pdf",
     },
   },
 };

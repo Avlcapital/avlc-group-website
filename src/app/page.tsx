@@ -99,7 +99,7 @@ export default function HomePage() {
 
         <div className="overflow-hidden rounded-xl border border-[var(--avlc-slate-200)] bg-slate-50">
           <Image
-            src="https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/pngwing.com1_-800x600.png"
+            src="/assets/branding/avlc-building.png"
             alt="AVLC Group Introduction"
             width={800}
             height={600}

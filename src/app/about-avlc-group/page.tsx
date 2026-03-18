@@ -17,39 +17,42 @@ const directors = [
   {
     name: "John Kageche",
     image:
-      "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2015/11/John-Kageche-Passport-Photo-370x275.png?resize=370%2C275&ssl=1",
+      "/assets/about/john-kageche.png",
+    role: "Director",
   },
   {
     name: "Andrew Kanyutu",
     image:
-      "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2015/11/Andrew-Kanyutu-Photo-370x275.jpg?resize=370%2C275&ssl=1",
+      "/assets/about/AK.jpg",
+    role: "Chief Executive Officer",
   },
   {
     name: "Moses Muriithi",
     image:
-      "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2015/11/Moses-Muriithi-Photo-370x275.jpg?resize=370%2C275&ssl=1",
+      "/assets/about/moses-muriithi.jpg",
+    role: "Chairman",
   },
 ];
 
 const partners = [
-  { name: "UAP", image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/uap.jpg?w=940&ssl=1" },
+  { name: "UAP", image: "/assets/partners/uap.jpg" },
   {
     name: "Resolution Insurance",
-    image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/resolution.png?w=940&ssl=1",
+    image: "/assets/partners/resolution.png",
   },
-  { name: "Proxima", image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/proxima.jpg?w=940&ssl=1" },
-  { name: "MPesa", image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/mpesa.jpg?w=940&ssl=1" },
-  { name: "Jubilee", image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/jubilee.png?w=940&ssl=1" },
-  { name: "IRA", image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/ira.png?w=940&ssl=1" },
+  { name: "Proxima", image: "/assets/partners/proxima.jpg" },
+  { name: "MPesa", image: "/assets/partners/mpesa.jpg" },
+  { name: "Jubilee", image: "/assets/partners/jubilee.png" },
+  { name: "IRA", image: "/assets/partners/ira.png" },
   {
     name: "Flying Doctors",
-    image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/flying-doctors.jpg?w=940&ssl=1",
+    image: "/assets/partners/flying-doctors.jpg",
   },
-  { name: "EcoCash", image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/ecocash.png?w=940&ssl=1" },
-  { name: "E Plus", image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/eplus.png?w=940&ssl=1" },
-  { name: "CIC Group", image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/cic.png?w=940&ssl=1" },
-  { name: "APA Insurance", image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/apa1.png?w=940&ssl=1" },
-  { name: "AIG", image: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/aig.png?w=940&ssl=1" },
+  { name: "EcoCash", image: "/assets/partners/ecocash.png" },
+  { name: "E Plus", image: "/assets/partners/eplus.png" },
+  { name: "CIC Group", image: "/assets/partners/cic.png" },
+  { name: "APA Insurance", image: "/assets/partners/apa.png" },
+  { name: "AIG", image: "/assets/partners/aig.png" },
 ];
 
 export default function AboutAvlcGroupPage() {
@@ -88,7 +91,7 @@ export default function AboutAvlcGroupPage() {
 
         <div className="overflow-hidden rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-2 shadow-sm">
           <Image
-            src="https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/pngwing.com1_-800x600.png"
+            src="/assets/branding/avlc-building.png"
             alt="AVLC Group introduction visual"
             width={800}
             height={600}
@@ -125,6 +128,9 @@ export default function AboutAvlcGroupPage() {
               <Image src={director.image} alt={director.name} width={370} height={275} className="h-auto w-full object-cover" />
               <div className="px-4 py-3">
                 <h3 className="text-lg text-[var(--avlc-navy-900)]">{director.name}</h3>
+                <p className="mt-2 inline-flex rounded-full bg-[color-mix(in_srgb,var(--avlc-primary)_16%,white)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--avlc-navy-900)]">
+                  {director.role}
+                </p>
               </div>
             </article>
           ))}

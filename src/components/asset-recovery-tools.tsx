@@ -5,23 +5,23 @@ import { FormEvent, useState } from "react";
 const claimForms = [
   {
     label: "Claiming as an Original Owner (4A)",
-    href: "https://ufaa.go.ke/wp-content/uploads/2022/07/ORIGINAL-OWNER-CLAIM-FORM-1.pdf",
+    href: "/assets/documents/asset-recovery/original-owner-claim-form.pdf",
   },
   {
     label: "Claiming as a Beneficiary/Deceased Cases (4B)",
-    href: "https://ufaa.go.ke/wp-content/uploads/2022/07/BENEFICIARY-CLAIM-FORM-1.pdf",
+    href: "/assets/documents/asset-recovery/beneficiary-claim-form.pdf",
   },
   {
     label: "Claiming on Behalf of a Business Entity (4C)",
-    href: "https://ufaa.go.ke/wp-content/uploads/2022/07/BUSINESS-ENTITY-CLAIM-FORM-2.pdf",
+    href: "/assets/documents/asset-recovery/business-entity-claim-form.pdf",
   },
   {
     label: "Claiming as an Agent for Owner (4D)",
-    href: "https://ufaa.go.ke/wp-content/uploads/2022/07/AGENT-FOR-OWNER-CLAIM-FORM-1.pdf",
+    href: "/assets/documents/asset-recovery/agent-for-owner-claim-form.pdf",
   },
   {
     label: "Claiming on Behalf of a Minor (4D Minor)",
-    href: "https://ufaa.go.ke/wp-content/uploads/2022/07/AGENT-FOR-OWNER-CLAIM-FORM-MINOR-1.pdf",
+    href: "/assets/documents/asset-recovery/agent-for-owner-minor-claim-form.pdf",
   },
 ];
 

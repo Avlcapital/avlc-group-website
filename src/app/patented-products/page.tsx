@@ -1,46 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import AssetRecoveryTools from "@/components/asset-recovery-tools";
-
-const productCards = [
-  {
-    name: "ASSET RECOVERY",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/istockphoto-1198189076-612x612-1.jpg?resize=158%2C59",
-    summary:
-      "One of our key services is the facilitation of asset recovery and reunification, where AVLC acts as a trusted intermediary between asset-holding institutions and clients.",
-  },
-  {
-    name: "CHILD GUARD",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/Child-Guard-Logo.jpg?fit=185%2C118&ssl=1",
-    summary:
-      "A partnership with E-plus Emergency Medical services and Flying Doctors Society of Africa powered by BKY Insurance Agency Limited.",
-  },
-  {
-    name: "LIFESTYLE LADY",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/Lifestyle-Lady-Logo.jpg?fit=194%2C126&ssl=1",
-    summary:
-      "Insurance policy targeted to the modern lady that covers beyond basics, including valuables and subsidized partner offers.",
-  },
-  {
-    name: "PESA NA PESA",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/Pesa-na-Pesa-Logo.jpg?fit=233%2C148&ssl=1",
-    summary:
-      "Pesa na Pesa™ (PNP) is an innovative mobile phone based digital lending product developed by AVL Capital ltd which offers utility loans to anyone who needs short term funds to pay for their utility bills.",
-  },
-  {
-    name: "BIMA HIMA",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/09/IMG-20210924-WA0001.jpg?fit=628%2C218&ssl=1",
-    summary:
-      "A platform that eases the burden of paying insurance premiums in manageable installments.",
-  },
-  {
-    name: "LANDBANK SOLUTION",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVLCGLOBAL.png?fit=500%2C200&ssl=1",
-    summary:
-      "Consultative structuring that facilitates security using land and other assets to unlock cash flows and business growth.",
-  },
-];
+import PatentProductsExplorer from "@/components/patent-products-explorer";
 
 const assetRecoverySteps = [
   "Handling all paperwork on behalf of the client and obtaining all necessary approvals to facilitate the recovery of assets.",
@@ -66,18 +27,7 @@ export default function PatentedProductsPage() {
           These patented and proprietary products are built to serve individuals, SMEs, and corporate clients across the region, enabling access to capital while supporting resilience, business growth, and financial stability.
         </p>
       </section>
-
-      <section className="grid gap-4 md:grid-cols-2">
-        {productCards.map((card) => (
-          <article key={card.name} className="rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-6 shadow-sm">
-            <div className="mb-4 flex min-h-20 items-center justify-center rounded-xl border border-[var(--avlc-slate-200)] bg-slate-50 p-3">
-              <Image src={card.logo} alt={`${card.name} logo`} width={260} height={120} className="h-auto w-auto max-h-16 object-contain" />
-            </div>
-            <h2 className="text-2xl text-[var(--avlc-navy-900)]">{card.name}</h2>
-            <p className="mt-2 text-sm leading-7 text-slate-700 sm:text-base">{card.summary}</p>
-          </article>
-        ))}
-      </section>
+      <PatentProductsExplorer />
 
       <section className="space-y-8 rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-7 shadow-sm sm:p-8">
         <article className="space-y-4">
@@ -93,7 +43,7 @@ export default function PatentedProductsPage() {
             ))}
           </ul>
           <a
-            href="https://acrobat.adobe.com/id/urn:aaid:sc:eu:c4a3c8e0-9d76-4a75-bce1-3c717fc7600d"
+            href="/assets/documents/asset-recovery/avlc-asset-recovery-application-form.pdf"
             target="_blank"
             rel="noreferrer"
             className="inline-flex rounded-md bg-[var(--avlc-primary)] px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)] transition hover:brightness-95"
@@ -230,7 +180,7 @@ export default function PatentedProductsPage() {
             </ul>
           </div>
           <a
-            href="http://www.avlc-group.com/wp-content/uploads/2021/08/PNP-TERMS-AND-CONDITIONS.pdf"
+            href="/assets/documents/patented-products/pesa-na-pesa-terms-and-conditions.pdf"
             target="_blank"
             rel="noreferrer"
             className="inline-flex rounded-md bg-[var(--avlc-primary)] px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)] transition hover:brightness-95"
@@ -251,7 +201,7 @@ export default function PatentedProductsPage() {
             <li>Access by dialing *483*01#.</li>
           </ul>
           <a
-            href="http://www.avlc-group.com/wp-content/uploads/2021/09/BIMA-HIMA-Terms-and-Conditions.pdf"
+            href="/assets/documents/patented-products/bima-hima-terms-and-conditions.pdf"
             target="_blank"
             rel="noreferrer"
             className="inline-flex rounded-md bg-[var(--avlc-primary)] px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)] transition hover:brightness-95"

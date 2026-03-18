@@ -38,7 +38,7 @@ export default function SiteHeader() {
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-3">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVLC.png?fit=500%2C200&ssl=1"
+              src="/assets/branding/avlc-logo.png"
               alt="AVLC Group logo"
               width={170}
               height={68}

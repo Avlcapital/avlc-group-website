@@ -54,11 +54,11 @@ export const tenderCountries: TenderCountry[] = [
     downloads: [
       {
         label: "Pre-qualification of contractors - Kagarama Project",
-        href: "http://www.avlc-group.com/wp-content/uploads/2023/08/Pre-qualification-of-contractors-Kagarama-Project-1.pdf",
+        href: "/assets/documents/tenders/prequalification-contractors-kagarama-project.pdf",
       },
       {
         label: "GENERAL CIS",
-        href: "http://www.avlc-group.com/wp-content/uploads/2023/08/GENERAL-CIS-.pdf",
+        href: "/assets/documents/tenders/general-cis.pdf",
       },
     ],
   },
@@ -117,11 +117,11 @@ export const tenderCountries: TenderCountry[] = [
     downloads: [
       {
         label: "Pre-qualification of contractors - DRC Housing Project",
-        href: "http://www.avlc-group.com/wp-content/uploads/2023/08/Pre-qualification-of-contractors-DRC-Housing-Project.pdf",
+        href: "/assets/documents/tenders/prequalification-contractors-drc-housing-project.pdf",
       },
       {
         label: "GENERAL CIS",
-        href: "http://www.avlc-group.com/wp-content/uploads/2023/08/GENERAL-CIS-.pdf",
+        href: "/assets/documents/tenders/general-cis.pdf",
       },
     ],
   },
