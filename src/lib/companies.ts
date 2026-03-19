@@ -50,7 +50,7 @@ export const companyProfiles: Record<string, CompanyProfile> = {
         ],
       },
       {
-        title: "OUR CORE VALUES",
+        title: "Value Proposition",
         bullets: [
           "Heavy investment in systems and structures that govern operation of the company.",
           "A top-rated Credit appraisal policy for all products.",

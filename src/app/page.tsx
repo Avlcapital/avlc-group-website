@@ -36,7 +36,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="motion-fade-up space-y-8" style={{ "--delay": "110ms" } as CSSProperties}>
+      <section
+        className="motion-fade-up grid items-center gap-8 rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-6 shadow-sm md:grid-cols-2 md:p-8"
+        style={{ "--delay": "110ms" } as CSSProperties}
+      >
+        <div className="space-y-3">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-[var(--avlc-navy-700)]">Introduction</p>
+          <h2 className="text-3xl text-[var(--avlc-navy-900)] sm:text-4xl">AVLC Group</h2>
+          <p className="text-sm leading-7 text-slate-700 sm:text-base">
+            <strong>AVLC GROUP</strong> AVLC Group is a reputable boutique finance firm offering a comprehensive range of financial solutions within the mezzanine space. The group comprises of 8 registered companies all working together to provide great products and solutions that are progressive and innovative whilst providing unrivalled customer service. We believe that our innovativeness and passion for mutual success puts us ahead of the pack. 
+
+            Our Vision is to provide a one stop shop for all financial needs through structured and customized finance solutions across East Africa and beyond. This vision is driven by the following <br/>
+            KEY STRATEGY: Customization - Creating products as per the greater well researched market demand.
+
+          </p>
+        </div>
+
+        <div className="overflow-hidden rounded-xl border border-[var(--avlc-slate-200)] bg-slate-50">
+          <Image
+            src="/assets/branding/avlc-building.png"
+            alt="AVLC Group Introduction"
+            width={800}
+            height={600}
+            className="h-auto w-full object-cover"
+          />
+        </div>
+      </section>
+
+      <section className="motion-fade-up space-y-8" style={{ "--delay": "240ms" } as CSSProperties}>
         <div id="group-companies" className="space-y-4">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-[var(--avlc-navy-700)]">Welcome to AVLC Group</p>
           <h2 className="text-3xl leading-tight text-[var(--avlc-navy-900)] sm:text-4xl">
@@ -78,33 +105,6 @@ export default function HomePage() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section
-        className="motion-fade-up grid items-center gap-8 rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-6 shadow-sm md:grid-cols-2 md:p-8"
-        style={{ "--delay": "240ms" } as CSSProperties}
-      >
-        <div className="space-y-3">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-[var(--avlc-navy-700)]">Introduction</p>
-          <h2 className="text-3xl text-[var(--avlc-navy-900)] sm:text-4xl">AVLC Group</h2>
-          <p className="text-sm leading-7 text-slate-700 sm:text-base">
-            <strong>AVLC GROUP</strong> AVLC Group is a reputable boutique finance firm offering a comprehensive range of financial solutions within the mezzanine space. The group comprises of 8 registered companies all working together to provide great products and solutions that are progressive and innovative whilst providing unrivalled customer service. We believe that our innovativeness and passion for mutual success puts us ahead of the pack. 
-
-            Our Vision is to provide a one stop shop for all financial needs through structured and customized finance solutions across East Africa and beyond. This vision is driven by the following <br/>
-            KEY STRATEGY: Customization - Creating products as per the greater well researched market demand.
-
-          </p>
-        </div>
-
-        <div className="overflow-hidden rounded-xl border border-[var(--avlc-slate-200)] bg-slate-50">
-          <Image
-            src="/assets/branding/avlc-building.png"
-            alt="AVLC Group Introduction"
-            width={800}
-            height={600}
-            className="h-auto w-full object-cover"
-          />
         </div>
       </section>
     </div>
