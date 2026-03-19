@@ -216,7 +216,14 @@ export default function PatentProductsExplorer() {
             className="rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-6 text-left shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-[var(--avlc-primary)] hover:shadow-md"
           >
             <div className="mb-4 flex min-h-20 items-center justify-center rounded-xl border border-[var(--avlc-slate-200)] bg-slate-50 p-3">
-              <Image src={card.logo} alt={`${card.name} logo`} width={260} height={120} className="h-auto w-auto max-h-16 object-contain" />
+              <Image
+                src={card.logo}
+                alt={`${card.name} logo`}
+                width={260}
+                height={120}
+                unoptimized
+                className="h-auto w-auto max-h-16 object-contain"
+              />
             </div>
             <h2 className="text-2xl text-[var(--avlc-navy-900)]">{card.name}</h2>
             <p className="mt-2 text-sm leading-7 text-slate-700 sm:text-base">{card.summary}</p>
