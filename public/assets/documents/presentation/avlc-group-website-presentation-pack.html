@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AVLC Group Website Presentation Pack</title>
+  <style>
+    :root {
+      --navy: #0b2540;
+      --primary: #08c1f3;
+      --gold: #f2c14e;
+      --ink: #1f2937;
+      --muted: #5b6472;
+      --line: #d9e2ec;
+      --surface: #ffffff;
+      --bg: #f5f8fb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef8fc 0%, var(--bg) 24%, var(--bg) 100%);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--navy), #123b60 70%, #0f5e83);
+      color: #fff;
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 0 18px 50px rgba(11, 37, 64, 0.18);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(8, 193, 243, 0.16);
+      color: #d9f8ff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      color: var(--navy);
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+
+    .hero h1,
+    .hero h2,
+    .hero h3 {
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-top: 14px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-top: 36px;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-top: 22px;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    strong {
+      color: var(--ink);
+    }
+
+    .hero p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 26px;
+      margin-top: 22px;
+    }
+
+    ul, ol {
+      margin: 0 0 16px 22px;
+      color: var(--muted);
+    }
+
+    li + li {
+      margin-top: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      background: #edf9fd;
+      color: var(--navy);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(8, 193, 243, 0.12);
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 14px 0 8px;
+      background: linear-gradient(180deg, rgba(245, 248, 251, 0.95), rgba(245, 248, 251, 0.7), rgba(245, 248, 251, 0));
+      backdrop-filter: blur(6px);
+    }
+
+    .button {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .button-primary {
+      background: var(--primary);
+      color: var(--navy);
+    }
+
+    .button-secondary {
+      background: #fff;
+      color: var(--navy);
+      border: 1px solid var(--line);
+    }
+
+    .footer-note {
+      margin-top: 30px;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .toolbar {
+        display: none;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      .hero,
+      .section,
+      .card {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="toolbar">
+      <button class="button button-secondary" onclick="window.location.reload()">Refresh</button>
+      <button class="button button-primary" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+
+    <section class="hero">
+      <span class="eyebrow">Presentation Pack</span>
+      <h1>AVLC Group Website</h1>
+      <p><strong style="color: #fff;">Prepared for:</strong> Dmura</p>
+      <p>This pack is designed for two presentation days: a business-facing walkthrough and a technical or operational follow-up.</p>
+      <p>
+        <span class="pill">Corporate Website</span>
+        <span class="pill">Admin Updates</span>
+        <span class="pill">Email Forms</span>
+        <span class="pill">Tender Documents</span>
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Executive Summary</h2>
+      <p>The AVLC Group website is a modern multi-page corporate platform that presents the AVLC brand, showcases group companies, highlights patented products, publishes tender and update information, and receives customer inquiries directly through email-enabled forms.</p>
+      <p>The website also includes an authenticated admin area that allows internal users to create, edit, publish, and manage updates without editing source code directly.</p>
+    </section>
+
+    <section class="section">
+      <h2>Current Scope</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Public Pages</h3>
+          <ul>
+            <li>Homepage</li>
+            <li>About AVLC Group</li>
+            <li>Company profile pages</li>
+            <li>Our Patented Products</li>
+            <li>Tender Openings</li>
+            <li>Updates</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Admin Pages</h3>
+          <ul>
+            <li>Admin login</li>
+            <li>Updates publisher</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Operational Features</h3>
+          <ul>
+            <li>Contact messages to company email</li>
+            <li>Asset recovery form submissions to company email</li>
+            <li>MongoDB-backed admin authentication</li>
+            <li>Local website assets and documents</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Feature Highlights</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>What It Does</th>
+            <th>Presentation Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Homepage</td>
+            <td>Introduces the group, presents the introduction section, and highlights the group companies.</td>
+            <td>Strong first impression and clear positioning.</td>
+          </tr>
+          <tr>
+            <td>About Page</td>
+            <td>Shows the group story, vision, values, directors, and partners.</td>
+            <td>Builds trust and corporate credibility.</td>
+          </tr>
+          <tr>
+            <td>Companies</td>
+            <td>Dedicated pages for AVLC subsidiaries accessed from a dropdown menu.</td>
+            <td>Shows the group as a structured business ecosystem.</td>
+          </tr>
+          <tr>
+            <td>Patented Products</td>
+            <td>Shows product cards with clickable popouts and detailed sections below.</td>
+            <td>Interactive and easy to demonstrate live.</td>
+          </tr>
+          <tr>
+            <td>Tender Openings</td>
+            <td>Organizes tender information by country with downloadable documents.</td>
+            <td>Shows practical business use beyond marketing content.</td>
+          </tr>
+          <tr>
+            <td>Updates</td>
+            <td>Public update timeline with admin publishing flow.</td>
+            <td>Demonstrates ongoing content operations.</td>
+          </tr>
+          <tr>
+            <td>Contact</td>
+            <td>Provides address, map, and message form routed to email.</td>
+            <td>Shows lead capture and communication readiness.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Admin and Operations</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Admin Authentication</h3>
+          <p>Admins sign in with username and password. Access is protected with session cookies and backed by MongoDB session validation.</p>
+        </div>
+        <div class="card">
+          <h3>Updates Publishing</h3>
+          <p>Admins can create, edit, publish, unpublish, and delete update entries that appear on the public Updates page.</p>
+        </div>
+        <div class="card">
+          <h3>Email Delivery</h3>
+          <p>Contact and asset recovery submissions are routed through SMTP and delivered to designated company inboxes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Technical Stack</h2>
+      <p>
+        <span class="pill">Next.js App Router</span>
+        <span class="pill">React</span>
+        <span class="pill">TypeScript</span>
+        <span class="pill">Tailwind CSS</span>
+        <span class="pill">MongoDB</span>
+        <span class="pill">Nodemailer</span>
+      </p>
+      <p>The implementation uses a server-rendered Next.js application for public pages, MongoDB for admin users and sessions, and API routes for form submissions and update publishing.</p>
+    </section>
+
+    <section class="section">
+      <h2>Architecture Snapshot</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Responsibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Public UI</td>
+            <td>Corporate content, company profiles, patented products, tenders, updates, and contact pages.</td>
+          </tr>
+          <tr>
+            <td>Admin UI</td>
+            <td>Login and updates management.</td>
+          </tr>
+          <tr>
+            <td>API Routes</td>
+            <td>Handle form submissions, login, logout, and update management.</td>
+          </tr>
+          <tr>
+            <td>Email Layer</td>
+            <td>Sends contact and asset recovery submissions to company email.</td>
+          </tr>
+          <tr>
+            <td>Data Layer</td>
+            <td>MongoDB stores admin users and session data. Update content supports admin-driven publishing.</td>
+          </tr>
+          <tr>
+            <td>Asset Layer</td>
+            <td>Local images and downloadable documents are stored inside the project for better reliability during demos.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Thursday Presentation Plan</h2>
+      <h3>Recommended Focus</h3>
+      <p>Use Thursday for business value, brand presence, and user journey.</p>
+      <ol>
+        <li>Start from the homepage and explain AVLC Group positioning.</li>
+        <li>Show the Introduction section and the group company highlights.</li>
+        <li>Open the About page and explain the corporate story, directors, and partners.</li>
+        <li>Use the Our Companies dropdown to show the group structure.</li>
+        <li>Open the Patented Products page and demonstrate one interactive product popout.</li>
+        <li>End with Contact and explain how inquiries flow into company email.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>Friday Presentation Plan</h2>
+      <h3>Recommended Focus</h3>
+      <p>Use Friday for administration, operations, and implementation maturity.</p>
+      <ol>
+        <li>Show the Updates page and explain public communication value.</li>
+        <li>Sign in to the admin side.</li>
+        <li>Create or edit an update.</li>
+        <li>Publish the update and show it reflected on the public page.</li>
+        <li>Explain contact and asset recovery submission handling.</li>
+        <li>Close with the stack, MongoDB-backed admin auth, and local asset strategy.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>Presentation Checklist</h2>
+      <ul>
+        <li>Verify homepage loads and brand assets display properly.</li>
+        <li>Verify company dropdown and company pages open correctly.</li>
+        <li>Verify patent product popout works.</li>
+        <li>Verify tender documents open.</li>
+        <li>Verify contact form is configured in the target environment.</li>
+        <li>Verify admin login works in the deployment environment.</li>
+        <li>Verify update publishing works before the presentation session starts.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Closing Statement</h2>
+      <p>The AVLC Group website now functions as a corporate presentation platform, a communication channel, a document delivery point, and an admin-managed public updates system. That makes it useful both as a brand site and as a practical operational tool.</p>
+    </section>
+
+    <p class="footer-note">File location: /assets/documents/presentation/avlc-group-website-presentation-pack.html</p>
+  </div>
+</body>
+</html>
