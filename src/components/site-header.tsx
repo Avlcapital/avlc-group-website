@@ -29,8 +29,18 @@ export default function SiteHeader() {
     <div className="motion-header-in fixed inset-x-0 top-0 z-50">
       <header className="border-b border-[var(--avlc-slate-200)] bg-[var(--avlc-primary)] text-[var(--avlc-navy-900)]">
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-2 text-xs sm:text-sm">
-          <p className="tracking-wide">Corporate Office: +254 717 780 171</p>
-          <p className="font-semibold">info@avlcapital.com</p>
+          <a
+            href="tel:+254717780171"
+            className="tracking-wide transition hover:underline focus:underline"
+          >
+            Corporate Office: +254 717 780 171
+          </a>
+          <a
+            href="mailto:info@avlcapital.com"
+            className="font-semibold transition hover:underline focus:underline"
+          >
+            info@avlcapital.com
+          </a>
         </div>
       </header>
 
