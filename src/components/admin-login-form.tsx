@@ -1,20 +1,20 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { FormEvent, useState } from "react";
 
 export default function AdminLoginForm() {
-  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const onLogin = async () => {
+  const onLogin = async (event?: FormEvent<HTMLFormElement>) => {
+    event?.preventDefault();
     setLoading(true);
     setStatus(null);
     const response = await fetch("/api/admin/login", {
       method: "POST",
+      credentials: "same-origin",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
     });
@@ -27,12 +27,11 @@ export default function AdminLoginForm() {
     }
 
     setLoading(false);
-    router.push("/admin/updates");
-    router.refresh();
+    window.location.assign("/admin");
   };
 
   return (
-    <div className="space-y-3">
+    <form onSubmit={(event) => void onLogin(event)} className="space-y-3">
       <input
         type="text"
         value={username}
@@ -48,14 +47,13 @@ export default function AdminLoginForm() {
         className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
       />
       <button
-        type="button"
-        onClick={onLogin}
+        type="submit"
         disabled={loading}
         className="inline-flex rounded-md bg-[var(--avlc-primary)] px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)] disabled:opacity-60"
       >
         {loading ? "Signing in..." : "Sign In"}
       </button>
       {status ? <p className="text-sm text-red-700">{status}</p> : null}
-    </div>
+    </form>
   );
 }

@@ -198,7 +198,7 @@ export default function PatentedProductsPage() {
           <ul className="list-disc space-y-2 pl-5 text-sm leading-7 text-slate-700 sm:text-base">
             <li>Flexible financing terms of up to 4 months.</li>
             <li>Quick processing time with competitive interest rates.</li>
-            <li>Access by dialing *483*01#.</li>
+            {/*<li>Access by dialing *483*01#.</li>*/}
           </ul>
           <a
             href="/assets/documents/patented-products/bima-hima-terms-and-conditions.pdf"

@@ -44,7 +44,7 @@ export default function HomePage() {
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-[var(--avlc-navy-700)]">Introduction</p>
           <h2 className="text-3xl text-[var(--avlc-navy-900)] sm:text-4xl">AVLC Group</h2>
           <p className="text-sm leading-7 text-slate-700 sm:text-base">
-            <strong>AVLC GROUP</strong> AVLC Group is a reputable boutique finance firm offering a comprehensive range of financial solutions within the mezzanine space. The group comprises of 8 registered companies all working together to provide great products and solutions that are progressive and innovative whilst providing unrivalled customer service. We believe that our innovativeness and passion for mutual success puts us ahead of the pack. 
+            <strong>AVLC GROUP</strong> is a reputable boutique finance firm offering a comprehensive range of financial solutions within the mezzanine space. The group comprises of 8 registered companies all working together to provide great products and solutions that are progressive and innovative whilst providing unrivalled customer service. We believe that our innovativeness and passion for mutual success puts us ahead of the pack. 
 
             Our Vision is to provide a one stop shop for all financial needs through structured and customized finance solutions across East Africa and beyond. This vision is driven by the following <br/>
             KEY STRATEGY: Customization - Creating products as per the greater well researched market demand.

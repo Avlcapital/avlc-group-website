@@ -80,9 +80,9 @@ export const companyProfiles: Record<string, CompanyProfile> = {
         ],
       },
       {
-        title: "NONFINANCIAL ACHIEVEMENTS",
+        title: "NON-FINANCIAL ACHIEVEMENTS",
         bullets: [
-          "AVL Capital Ltd, was on 5thJune 2025 Licensed as a Digital Credit Provider by the Central Bank of Kenya.",
+          "AVL Capital Ltd, was on 5th June 2025 Licensed as a Digital Credit Provider by the Central Bank of Kenya.",
           "AVL Capital has emerged to prove that access to private lending is viable business in the current market.",
           "Frontier for the ongoing registration of the Private Lending Association of Kenya whose vision is to enable a forum for all members, act as a collective lobby to advance members' collective interests and serve as a liaison between members and the public, the government, and other institutions in Kenya and worldwide.",
           "Growth in ongoing relations with more Banks in the market having confidence in our service delivery. Registration of AVL Capital Sacco for members working in financial institutions and firms.",
