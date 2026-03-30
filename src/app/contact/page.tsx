@@ -1,4 +1,4 @@
-import ContactForm from "@/components/contact-form";
+import ContactChatWidget from "@/components/contact-chat-widget";
 
 export default function ContactPage() {
   return (
@@ -23,10 +23,27 @@ export default function ContactPage() {
           <p className="text-sm leading-7 text-slate-700 sm:text-base">+254 717 780 171</p>
           <p className="text-sm leading-7 text-slate-700 sm:text-base">Email: info@avlcapital.com</p>
         </article>
+      </section>
 
+      <section className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
         <article className="rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-6 shadow-sm sm:p-8">
-          <ContactForm />
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[var(--avlc-navy-700)]">Instant Support</p>
+          <h2 className="mt-2 text-2xl text-[var(--avlc-navy-900)]">Need a faster conversation?</h2>
+          <p className="mt-4 text-sm leading-7 text-slate-700 sm:text-base">
+            Send your message directly from this page. It goes into the admin support inbox, and our team replies to the
+            email address you provide.
+          </p>
+          <div className="mt-5 rounded-xl border border-[var(--avlc-slate-200)] bg-slate-50 p-4">
+            <p className="text-sm font-semibold text-[var(--avlc-navy-900)]">What this chat helps with</p>
+            <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+              <li>General enquiries about AVLC Group and its companies</li>
+              <li>Follow-up on updates, tenders, and patented products</li>
+              <li>Quick contact before switching to email or phone</li>
+            </ul>
+          </div>
         </article>
+
+        <ContactChatWidget />
       </section>
 
       <section className="rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-6 shadow-sm sm:p-8">
