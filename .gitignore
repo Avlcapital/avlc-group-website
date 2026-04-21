@@ -47,3 +47,11 @@ _bmad-output/
 .claude
 .cursor
 .github
+design-artifacts/
+docs/
+
+# split app generated files
+frontend/.next/
+frontend/out/
+backend/node_modules/
+backend/package-lock.json
