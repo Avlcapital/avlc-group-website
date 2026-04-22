@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  --avlc-primary: #08c1f3;
+  --avlc-navy-900: #091a34;
+  --avlc-navy-700: #113162;
+  --avlc-gold-500: #c9a253;
+  --avlc-gold-300: #e6cf9a;
+  --avlc-ink-900: #0f1d33;
+  --avlc-slate-200: #d8deeb;
+  --avlc-paper: #f6f8fc;
+  --background: #f6f8fc;
+  --foreground: #0f1d33;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-manrope);
+  --font-display: var(--font-playfair);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.form-field {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--avlc-slate-200);
+  background: #ffffff;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #334155;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-playfair), serif;
+}
+
+.avlc-shell {
+  background:
+    radial-gradient(1400px 450px at 12% -15%, rgb(201 162 83 / 20%), transparent 60%),
+    linear-gradient(180deg, #f8fbff 0%, #f4f7fc 40%, #f8fbff 100%);
+}
+
+.avlc-hero {
+  background:
+    linear-gradient(106deg, rgb(9 26 52 / 95%) 0%, rgb(17 49 98 / 85%) 50%, rgb(9 26 52 / 90%) 100%),
+    radial-gradient(850px 420px at 100% 0%, rgb(230 207 154 / 23%), transparent 65%);
+}
+
+.avlc-badge {
+  border: 1px solid rgb(201 162 83 / 50%);
+  color: var(--avlc-gold-300);
+}
+
+@keyframes avlc-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes avlc-header-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.motion-fade-up {
+  opacity: 0;
+  animation: avlc-fade-up 700ms ease-out forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+.motion-header-in {
+  animation: avlc-header-in 550ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-fade-up,
+  .motion-header-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
