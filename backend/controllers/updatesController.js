@@ -1,27 +1,69 @@
-const path = require("node:path");
-const { mkdir, readFile, writeFile } = require("node:fs/promises");
+const { getMongoDb } = require("../middleware/db");
 
 const UPDATE_TYPES = ["Announcement", "Partnership", "Tender", "Product Launch", "Compliance"];
 const UPDATE_STATUSES = ["New", "Featured", "Published"];
-const updatesFilePath = path.join(__dirname, "..", "data", "updates.json");
+const UPDATES_COLLECTION_NAME = "updates";
 
-async function readUpdatesFile() {
-  try {
-    const raw = await readFile(updatesFilePath, "utf8");
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
+let updatesCollectionPromise;
+
+function cleanOptionalString(value) {
+  if (typeof value !== "string") {
+    return undefined;
   }
+
+  const trimmed = value.trim();
+  return trimmed || undefined;
 }
 
-async function writeUpdatesFile(items) {
-  await mkdir(path.dirname(updatesFilePath), { recursive: true });
-  await writeFile(updatesFilePath, JSON.stringify(items, null, 2), "utf8");
+function normalizeUpdateInput(payload) {
+  return {
+    id: cleanOptionalString(payload.id),
+    title: String(payload.title || "").trim(),
+    summary: String(payload.summary || "").trim(),
+    publishedAt: String(payload.publishedAt || "").trim(),
+    type: payload.type,
+    source: String(payload.source || "").trim(),
+    status: payload.status,
+    isPublished: payload.isPublished,
+    location: cleanOptionalString(payload.location),
+    documentUrl: cleanOptionalString(payload.documentUrl),
+    externalUrl: cleanOptionalString(payload.externalUrl),
+  };
 }
 
-function sortUpdatesDesc(items) {
-  return [...items].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+function toStoredUpdateDocument(payload, existing = {}) {
+  const now = new Date().toISOString();
+  return {
+    id: payload.id,
+    title: payload.title,
+    summary: payload.summary,
+    publishedAt: payload.publishedAt,
+    type: payload.type,
+    source: payload.source,
+    status: payload.status,
+    isPublished: payload.isPublished,
+    ...(payload.location ? { location: payload.location } : {}),
+    ...(payload.documentUrl ? { documentUrl: payload.documentUrl } : {}),
+    ...(payload.externalUrl ? { externalUrl: payload.externalUrl } : {}),
+    createdAt: existing.createdAt || now,
+    updatedAt: now,
+  };
+}
+
+function mapStoredUpdate(document) {
+  return {
+    id: document.id,
+    title: document.title,
+    summary: document.summary,
+    publishedAt: document.publishedAt,
+    type: document.type,
+    source: document.source,
+    status: document.status,
+    isPublished: document.isPublished,
+    ...(document.location ? { location: document.location } : {}),
+    ...(document.documentUrl ? { documentUrl: document.documentUrl } : {}),
+    ...(document.externalUrl ? { externalUrl: document.externalUrl } : {}),
+  };
 }
 
 function getUpdatesVersion(items) {
@@ -67,13 +109,35 @@ function validateUpdatePayload(payload) {
   return typeof payload.isPublished === "boolean";
 }
 
+async function getUpdatesCollection() {
+  if (!updatesCollectionPromise) {
+    updatesCollectionPromise = (async () => {
+      const db = await getMongoDb();
+      const collection = db.collection(UPDATES_COLLECTION_NAME);
+
+      await collection.createIndex({ id: 1 }, { unique: true });
+      await collection.createIndex({ isPublished: 1, publishedAt: -1 });
+      await collection.createIndex({ publishedAt: -1 });
+      return collection;
+    })().catch((error) => {
+      updatesCollectionPromise = undefined;
+      throw error;
+    });
+  }
+
+  return updatesCollectionPromise;
+}
+
 async function getAllUpdates() {
-  return sortUpdatesDesc(await readUpdatesFile());
+  const collection = await getUpdatesCollection();
+  const documents = await collection.find({}).sort({ publishedAt: -1, updatedAt: -1 }).toArray();
+  return documents.map(mapStoredUpdate);
 }
 
 async function getPublishedUpdates() {
-  const updates = await readUpdatesFile();
-  return sortUpdatesDesc(updates.filter((item) => item.isPublished));
+  const collection = await getUpdatesCollection();
+  const documents = await collection.find({ isPublished: true }).sort({ publishedAt: -1, updatedAt: -1 }).toArray();
+  return documents.map(mapStoredUpdate);
 }
 
 async function getUpdatesPayload() {
@@ -82,29 +146,19 @@ async function getUpdatesPayload() {
 }
 
 async function upsertUpdate(input) {
-  const updates = await readUpdatesFile();
-  const normalized = { ...input, id: input.id || createUpdateId(input.title, input.publishedAt) };
-  const existingIndex = updates.findIndex((item) => item.id === normalized.id);
+  const collection = await getUpdatesCollection();
+  const normalized = normalizeUpdateInput({ ...input, id: input.id || createUpdateId(input.title, input.publishedAt) });
+  const existing = await collection.findOne({ id: normalized.id }, { projection: { createdAt: 1 } });
+  const stored = toStoredUpdateDocument(normalized, existing || {});
 
-  if (existingIndex >= 0) {
-    updates[existingIndex] = normalized;
-  } else {
-    updates.push(normalized);
-  }
-
-  await writeUpdatesFile(updates);
-  return normalized;
+  await collection.replaceOne({ id: normalized.id }, stored, { upsert: true });
+  return mapStoredUpdate(stored);
 }
 
 async function deleteUpdate(id) {
-  const updates = await readUpdatesFile();
-  const filtered = updates.filter((item) => item.id !== id);
-  if (filtered.length === updates.length) {
-    return false;
-  }
-
-  await writeUpdatesFile(filtered);
-  return true;
+  const collection = await getUpdatesCollection();
+  const result = await collection.deleteOne({ id });
+  return result.deletedCount > 0;
 }
 
 async function listPublicUpdates() {
@@ -125,7 +179,7 @@ async function createAdminUpdate(payload) {
 }
 
 async function updateAdminUpdate(id, payload) {
-  if (!payload) {
+  if (!payload || !validateUpdatePayload(payload)) {
     const error = new Error("Invalid update payload.");
     error.status = 400;
     throw error;

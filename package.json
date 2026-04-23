@@ -10,7 +10,8 @@
         "start:backend": "npm --prefix backend run start",
         "lint": "npm --prefix frontend run lint",
         "admin:create-user": "npm --prefix backend run admin:create-user --",
-        "mongo:check": "npm --prefix backend run mongo:check"
+        "mongo:check": "npm --prefix backend run mongo:check",
+        "updates:migrate": "npm --prefix backend run updates:migrate --"
     },
     "dependencies": {
         "bcryptjs": "^3.0.3",
