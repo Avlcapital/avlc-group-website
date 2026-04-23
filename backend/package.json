@@ -6,7 +6,8 @@
     "dev": "node server.js",
     "start": "node server.js",
     "admin:create-user": "node scripts/create-admin-user.mjs",
-    "mongo:check": "node scripts/check-mongo.mjs"
+    "mongo:check": "node scripts/check-mongo.mjs",
+    "updates:migrate": "node scripts/migrate-updates-to-mongo.mjs"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
