@@ -6,15 +6,21 @@ const { handleGuaranteeRequestRoutes } = require("./guaranteeRequestRoutes");
 const { handleUpdateRoutes } = require("./updatesRoutes");
 const { requireAdmin } = require("../middleware/auth");
 const { checkMongoConnection } = require("../middleware/db");
-const { sendJson, sendNoContent } = require("../middleware/http");
+const { isOriginAllowed, sendJson, sendNoContent } = require("../middleware/http");
 
 async function routeRequest(request, response) {
   const url = new URL(request.url || "/", `http://${request.headers.host || "localhost"}`);
   const pathName = url.pathname.replace(/\/+$/, "") || "/";
   const method = request.method || "GET";
+  const origin = request.headers.origin;
 
   if (method === "OPTIONS") {
     sendNoContent(response, request);
+    return;
+  }
+
+  if (origin && !isOriginAllowed(origin)) {
+    sendJson(response, request, 403, { error: "Origin not allowed." });
     return;
   }
 

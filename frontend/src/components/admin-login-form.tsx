@@ -1,9 +1,12 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useSearchParams } from "next/navigation";
+
 import { apiFetch } from "@/lib/api-client";
 
 export default function AdminLoginForm() {
+  const searchParams = useSearchParams();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState<string | null>(null);
@@ -27,7 +30,9 @@ export default function AdminLoginForm() {
     }
 
     setLoading(false);
-    window.location.assign("/admin");
+    const nextPath = searchParams.get("next");
+    const redirectPath = nextPath?.startsWith("/admin") ? nextPath : "/admin";
+    window.location.assign(redirectPath);
   };
 
   return (

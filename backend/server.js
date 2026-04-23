@@ -2,7 +2,7 @@ const http = require("node:http");
 const { loadEnv } = require("./middleware/env");
 const { checkMongoConnection, formatMongoConnectionError, getMongoConfigSummary } = require("./middleware/db");
 const { routeRequest } = require("./routes");
-const { sendJson } = require("./middleware/http");
+const { getAllowedOrigins, sendJson } = require("./middleware/http");
 
 loadEnv();
 
@@ -17,7 +17,7 @@ const server = http.createServer((request, response) => {
 
 server.listen(PORT, () => {
   console.log(`AVLC backend running on http://localhost:${PORT}`);
-  console.log(`Allowed frontend origins: ${process.env.FRONTEND_ORIGIN || "http://localhost:3000"}`);
+  console.log(`Allowed frontend origins: ${getAllowedOrigins().join(", ")}`);
   const mongoConfig = getMongoConfigSummary();
   console.log(`MongoDB URI configured: ${mongoConfig.hasMongoUri ? "yes" : "no"}`);
   console.log(`MongoDB database: ${mongoConfig.mongoDb}`);

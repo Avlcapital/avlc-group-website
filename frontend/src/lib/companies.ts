@@ -230,8 +230,8 @@ export const companyProfiles: Record<string, CompanyProfile> = {
     intro: [
       "Bid Bonds and Guarantee needs simplified.",
       "Welcome to PSL CAPITAL LIMITED, (a subsidiary firm of AVLC GROUP) where we are committed to providing comprehensive bank guarantees and Bid Bonds solutions tailored to the unique needs of businesses in Kenya and Eastern Africa.",
-      "Please download and fill the form below to get your Bid Bond processing easy and fast.",
-      "PSL Bid Bond Request form (2022)",
+      //"Please download and fill the form below to get your Bid Bond processing easy and fast.",
+      //"PSL Bid Bond Request form (2022)",
     ],
     sections: [
       {
@@ -291,10 +291,10 @@ export const companyProfiles: Record<string, CompanyProfile> = {
         ],
       },
     ],
-    downloadCta: {
+    /*downloadCta: {
       label: "PSL Bid Bond Request form (2022)",
       href: "/assets/documents/companies/psl-bid-bond-request-form-2022.pdf",
-    },
+    },*/
   },
 };
 
