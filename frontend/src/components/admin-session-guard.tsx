@@ -9,14 +9,9 @@ type Props = {
   children: React.ReactNode;
 };
 
-function getLoginRedirect(pathname: string) {
-  const nextPath = pathname.startsWith("/admin") ? pathname : "/admin";
-  return `/admin/login?next=${encodeURIComponent(nextPath)}`;
-}
-
 export default function AdminSessionGuard({ children }: Props) {
-  const pathname = usePathname();
   const router = useRouter();
+  const pathname = usePathname();
   const isLoginPage = pathname === "/admin/login";
   const [checking, setChecking] = useState(!isLoginPage);
   const [isAuthorized, setIsAuthorized] = useState(isLoginPage);
@@ -48,7 +43,7 @@ export default function AdminSessionGuard({ children }: Props) {
 
         setIsAuthorized(false);
         setChecking(false);
-        router.replace(getLoginRedirect(pathname));
+        router.replace("/admin/login");
       })
       .catch(() => {
         if (!active) {
@@ -57,7 +52,7 @@ export default function AdminSessionGuard({ children }: Props) {
 
         setIsAuthorized(false);
         setChecking(false);
-        router.replace(getLoginRedirect(pathname));
+        router.replace("/admin/login");
       });
 
     return () => {
