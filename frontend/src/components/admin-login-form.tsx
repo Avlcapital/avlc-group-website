@@ -4,11 +4,7 @@ import { FormEvent, useState } from "react";
 
 import { apiFetch } from "@/lib/api-client";
 
-type Props = {
-  redirectTo?: string;
-};
-
-export default function AdminLoginForm({ redirectTo }: Props) {
+export default function AdminLoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState<string | null>(null);
@@ -32,8 +28,7 @@ export default function AdminLoginForm({ redirectTo }: Props) {
     }
 
     setLoading(false);
-    const redirectPath = redirectTo?.startsWith("/admin") ? redirectTo : "/admin";
-    window.location.assign(redirectPath);
+    window.location.assign("/admin");
   };
 
   return (

@@ -45,6 +45,7 @@ export default function AdminUpdatesManager({ initialUpdates }: Props) {
   const [updates, setUpdates] = useState(initialUpdates);
   const [draft, setDraft] = useState<UpdateInput>(blankDraft);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [isComposerOpen, setIsComposerOpen] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -100,6 +101,7 @@ export default function AdminUpdatesManager({ initialUpdates }: Props) {
     await reload();
     setDraft(blankDraft);
     setEditingId(null);
+    setIsComposerOpen(false);
     setStatus(editingId ? "Update edited successfully." : "Update created successfully.");
     setLoading(false);
   };
@@ -118,6 +120,7 @@ export default function AdminUpdatesManager({ initialUpdates }: Props) {
     if (editingId === id) {
       setEditingId(null);
       setDraft(blankDraft);
+      setIsComposerOpen(false);
     }
     setStatus("Update deleted.");
     setLoading(false);
@@ -174,7 +177,22 @@ export default function AdminUpdatesManager({ initialUpdates }: Props) {
       externalUrl: item.externalUrl || "",
     });
     setStatus(null);
+    setIsComposerOpen(true);
   };
+
+  const openCreateComposer = useCallback(() => {
+    setEditingId(null);
+    setDraft(blankDraft);
+    setStatus(null);
+    setIsComposerOpen(true);
+  }, []);
+
+  const closeComposer = useCallback(() => {
+    setEditingId(null);
+    setDraft(blankDraft);
+    setStatus(null);
+    setIsComposerOpen(false);
+  }, []);
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -182,120 +200,60 @@ export default function AdminUpdatesManager({ initialUpdates }: Props) {
     });
   }, [reload]);
 
+  useEffect(() => {
+    if (!isComposerOpen) {
+      return;
+    }
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeComposer();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeComposer, isComposerOpen]);
+
   return (
     <div className="space-y-6">
       <section className="rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-6 shadow-sm sm:p-8">
-        <h2 className="text-2xl text-[var(--avlc-navy-900)]">{editingId ? "Edit Update" : "Create Update"}</h2>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
-          <input
-            value={draft.title}
-            onChange={(event) => setDraft((prev) => ({ ...prev, title: event.target.value }))}
-            placeholder="Title *"
-            className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
-          />
-          <input
-            value={draft.source}
-            onChange={(event) => setDraft((prev) => ({ ...prev, source: event.target.value }))}
-            placeholder="Source *"
-            className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
-          />
-          <input
-            type="date"
-            value={draft.publishedAt}
-            onChange={(event) => setDraft((prev) => ({ ...prev, publishedAt: event.target.value }))}
-            className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
-          />
-          <input
-            value={draft.location || ""}
-            onChange={(event) => setDraft((prev) => ({ ...prev, location: event.target.value }))}
-            placeholder="Location (optional)"
-            className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
-          />
-          <select
-            value={draft.type}
-            onChange={(event) => setDraft((prev) => ({ ...prev, type: event.target.value as UpdateType }))}
-            className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
-          >
-            {UPDATE_TYPES.map((type) => (
-              <option key={type} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
-          <select
-            value={draft.status}
-            onChange={(event) => setDraft((prev) => ({ ...prev, status: event.target.value as UpdateStatus }))}
-            className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
-          >
-            {UPDATE_STATUSES.map((item) => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-          <input
-            value={draft.documentUrl || ""}
-            onChange={(event) => setDraft((prev) => ({ ...prev, documentUrl: event.target.value }))}
-            placeholder="Document URL (optional)"
-            className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700 md:col-span-2"
-          />
-          <input
-            value={draft.externalUrl || ""}
-            onChange={(event) => setDraft((prev) => ({ ...prev, externalUrl: event.target.value }))}
-            placeholder="Details URL (optional)"
-            className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700 md:col-span-2"
-          />
-          <textarea
-            value={draft.summary}
-            onChange={(event) => setDraft((prev) => ({ ...prev, summary: event.target.value }))}
-            placeholder="Summary *"
-            rows={4}
-            className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700 md:col-span-2"
-          />
-          <label className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700">
-            <input
-              type="checkbox"
-              checked={draft.isPublished}
-              onChange={(event) => setDraft((prev) => ({ ...prev, isPublished: event.target.checked }))}
-            />
-            Publish immediately
-          </label>
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-3">
-          <button
-            type="button"
-            onClick={save}
-            disabled={loading}
-            className="inline-flex rounded-md bg-[var(--avlc-primary)] px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)] disabled:opacity-60"
-          >
-            {loading ? "Saving..." : editingId ? "Save Changes" : "Create Update"}
-          </button>
-          {editingId ? (
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h2 className="text-2xl text-[var(--avlc-navy-900)]">Updates Workspace</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-700">
+              Open the popout editor to create a new update or revise an existing one without leaving the list.
+            </p>
+            {status ? <p className="mt-3 text-sm text-slate-700">{status}</p> : null}
+          </div>
+          <div className="flex flex-wrap gap-3">
             <button
               type="button"
-              onClick={() => {
-                setEditingId(null);
-                setDraft(blankDraft);
-              }}
+              onClick={openCreateComposer}
+              className="inline-flex rounded-md bg-[var(--avlc-primary)] px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)]"
+            >
+              Create Update
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                void reload()
+                  .then(() => setStatus("Updates reloaded."))
+                  .catch(() => setStatus("Session expired. Please sign in again."))
+              }
               className="inline-flex rounded-md border border-[var(--avlc-slate-200)] bg-white px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)]"
             >
-              Cancel Edit
+              Reload
             </button>
-          ) : null}
-          <button
-            type="button"
-            onClick={() =>
-              void reload()
-                .then(() => setStatus("Updates reloaded."))
-                .catch(() => setStatus("Session expired. Please sign in again."))
-            }
-            className="inline-flex rounded-md border border-[var(--avlc-slate-200)] bg-white px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)]"
-          >
-            Reload
-          </button>
+          </div>
         </div>
-        {status ? <p className="mt-3 text-sm text-slate-700">{status}</p> : null}
       </section>
 
       <section className="rounded-2xl border border-[var(--avlc-slate-200)] bg-white p-6 shadow-sm sm:p-8">
@@ -335,6 +293,132 @@ export default function AdminUpdatesManager({ initialUpdates }: Props) {
           ))}
         </ul>
       </section>
+
+      {isComposerOpen ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(15,23,42,0.55)] p-4"
+          onClick={closeComposer}
+        >
+          <section
+            className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-[28px] border border-[var(--avlc-slate-200)] bg-white p-6 shadow-2xl sm:p-8"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.28em] text-[var(--avlc-navy-700)]">Publisher</p>
+                <h2 className="mt-2 text-3xl text-[var(--avlc-navy-900)]">
+                  {editingId ? "Edit Update" : "Create Update"}
+                </h2>
+                <p className="mt-2 text-sm leading-7 text-slate-700">
+                  Fill in the details below and save when the update is ready to publish or keep as draft.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={closeComposer}
+                className="inline-flex rounded-md border border-[var(--avlc-slate-200)] bg-white px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)]"
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="mt-6 grid gap-3 md:grid-cols-2">
+              <input
+                value={draft.title}
+                onChange={(event) => setDraft((prev) => ({ ...prev, title: event.target.value }))}
+                placeholder="Title *"
+                className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
+              />
+              <input
+                value={draft.source}
+                onChange={(event) => setDraft((prev) => ({ ...prev, source: event.target.value }))}
+                placeholder="Source *"
+                className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
+              />
+              <input
+                type="date"
+                value={draft.publishedAt}
+                onChange={(event) => setDraft((prev) => ({ ...prev, publishedAt: event.target.value }))}
+                className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
+              />
+              <input
+                value={draft.location || ""}
+                onChange={(event) => setDraft((prev) => ({ ...prev, location: event.target.value }))}
+                placeholder="Location (optional)"
+                className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
+              />
+              <select
+                value={draft.type}
+                onChange={(event) => setDraft((prev) => ({ ...prev, type: event.target.value as UpdateType }))}
+                className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
+              >
+                {UPDATE_TYPES.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={draft.status}
+                onChange={(event) => setDraft((prev) => ({ ...prev, status: event.target.value as UpdateStatus }))}
+                className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700"
+              >
+                {UPDATE_STATUSES.map((item) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+              <input
+                value={draft.documentUrl || ""}
+                onChange={(event) => setDraft((prev) => ({ ...prev, documentUrl: event.target.value }))}
+                placeholder="Document URL (optional)"
+                className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700 md:col-span-2"
+              />
+              <input
+                value={draft.externalUrl || ""}
+                onChange={(event) => setDraft((prev) => ({ ...prev, externalUrl: event.target.value }))}
+                placeholder="Details URL (optional)"
+                className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700 md:col-span-2"
+              />
+              <textarea
+                value={draft.summary}
+                onChange={(event) => setDraft((prev) => ({ ...prev, summary: event.target.value }))}
+                placeholder="Summary *"
+                rows={5}
+                className="w-full rounded-md border border-[var(--avlc-slate-200)] px-3 py-2 text-sm text-slate-700 md:col-span-2"
+              />
+              <label className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700">
+                <input
+                  type="checkbox"
+                  checked={draft.isPublished}
+                  onChange={(event) => setDraft((prev) => ({ ...prev, isPublished: event.target.checked }))}
+                />
+                Publish immediately
+              </label>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={save}
+                disabled={loading}
+                className="inline-flex rounded-md bg-[var(--avlc-primary)] px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)] disabled:opacity-60"
+              >
+                {loading ? "Saving..." : editingId ? "Save Changes" : "Create Update"}
+              </button>
+              <button
+                type="button"
+                onClick={closeComposer}
+                className="inline-flex rounded-md border border-[var(--avlc-slate-200)] bg-white px-4 py-2 text-sm font-semibold text-[var(--avlc-navy-900)]"
+              >
+                Cancel
+              </button>
+            </div>
+            {status ? <p className="mt-4 text-sm text-slate-700">{status}</p> : null}
+          </section>
+        </div>
+      ) : null}
     </div>
   );
 }
