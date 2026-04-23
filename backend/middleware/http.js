@@ -1,29 +1,39 @@
+const DEFAULT_FRONTEND_ORIGINS = ["http://localhost:3000", "https://avlc-group-website.vercel.app"];
+
 function getAllowedOrigins() {
-  return (process.env.FRONTEND_ORIGIN || "http://localhost:3000")
+  return [...DEFAULT_FRONTEND_ORIGINS, ...(process.env.FRONTEND_ORIGIN || "")
     .split(",")
     .map((origin) => origin.trim())
-    .filter(Boolean);
+    .filter(Boolean)]
+    .filter((origin, index, allOrigins) => allOrigins.indexOf(origin) === index);
+}
+
+function isOriginAllowed(origin) {
+  return Boolean(origin) && getAllowedOrigins().includes(origin);
 }
 
 function getAllowedOrigin(origin) {
-  const allowedOrigins = getAllowedOrigins();
   if (!origin) {
-    return allowedOrigins[0] || "http://localhost:3000";
+    return null;
   }
-  if (allowedOrigins.includes(origin)) {
-    return origin;
-  }
-  return allowedOrigins[0] || origin;
+
+  return isOriginAllowed(origin) ? origin : null;
 }
 
 function createCorsHeaders(request) {
-  return {
-    "Access-Control-Allow-Origin": getAllowedOrigin(request.headers.origin),
-    "Access-Control-Allow-Credentials": "true",
+  const allowedOrigin = getAllowedOrigin(request.headers.origin);
+  const headers = {
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
     "Vary": "Origin",
   };
+
+  if (allowedOrigin) {
+    headers["Access-Control-Allow-Origin"] = allowedOrigin;
+    headers["Access-Control-Allow-Credentials"] = "true";
+  }
+
+  return headers;
 }
 
 function sendJson(response, request, status, payload, extraHeaders = {}) {
@@ -98,6 +108,8 @@ async function readFormData(request) {
 
 module.exports = {
   createCorsHeaders,
+  getAllowedOrigins,
+  isOriginAllowed,
   parseCookies,
   readFormData,
   readJson,

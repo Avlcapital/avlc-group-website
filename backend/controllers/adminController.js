@@ -6,6 +6,7 @@ const {
   createAdminSession,
   deleteSessionToken,
   findAdminUserByUsername,
+  requireAdmin,
 } = require("../middleware/auth");
 const { parseCookies, serializeCookie } = require("../middleware/http");
 
@@ -42,4 +43,16 @@ async function logoutAdmin(request) {
   };
 }
 
-module.exports = { loginAdmin, logoutAdmin };
+async function getAdminSessionStatus(request) {
+  await cleanupExpiredSessions();
+
+  if (!(await requireAdmin(request))) {
+    const error = new Error("Unauthorized.");
+    error.status = 401;
+    throw error;
+  }
+
+  return { ok: true };
+}
+
+module.exports = { getAdminSessionStatus, loginAdmin, logoutAdmin };
