@@ -108,12 +108,12 @@ export const companyProfiles: Record<string, CompanyProfile> = {
       {
         title: "Contact Addresses",
         bullets: [
-          "Andrew Kanyutu - Managing Director - akanyutu@avlcapital.com",
-          "John Kageche - Director/Principle Officer - jkageche@avlcapital.com",
-          "Moses Nyaga - Director/Chairman - mosesnyagamuriithi@gmail.com",
+          //"Andrew Kanyutu - Managing Director - akanyutu@avlcapital.com",
+          //"John Kageche - Director/Principle Officer - jkageche@avlcapital.com",
+          //"Moses Nyaga - Director/Chairman - mosesnyagamuriithi@gmail.com",
           "Group Website - AVLC Group - www.avlc-group.com",
           "Postal Box - AVLC Group - 35502-00100 Nairobi, Kenya",
-          "Phone: 020-230 4180 / 0718-140 125",
+          "Phone: 020-230 4180 / 0717780171",
           "Email - AVLC Group - info@avlcapital.com",
         ],
       },
