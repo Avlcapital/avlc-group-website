@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "start": "nodemon server.js",
     "admin:create-user": "node scripts/create-admin-user.mjs",
     "mongo:check": "node scripts/check-mongo.mjs",
     "updates:migrate": "node scripts/migrate-updates-to-mongo.mjs"
@@ -17,5 +17,8 @@
   "engines": {
     "node": ">=20.9.0",
     "npm": ">=10"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }

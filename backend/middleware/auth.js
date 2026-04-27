@@ -38,17 +38,38 @@ async function createAdminSession(user) {
   return token;
 }
 
-async function isSessionTokenValid(token) {
+async function findAdminSessionByToken(token) {
   if (!token) {
-    return false;
+    return null;
   }
 
   const db = await getMongoDb();
-  const session = await db.collection("admin_sessions").findOne({
+  return db.collection("admin_sessions").findOne({
     tokenHash: sha256(token),
     expiresAt: { $gt: new Date() },
   });
-  return Boolean(session);
+}
+
+function getSessionTokenFromRequest(request) {
+  const cookies = parseCookies(request.headers.cookie || "");
+  return cookies[ADMIN_COOKIE_NAME];
+}
+
+async function getAdminSession(request) {
+  return findAdminSessionByToken(getSessionTokenFromRequest(request));
+}
+
+async function getCurrentAdminUser(request) {
+  const session = await getAdminSession(request);
+  if (!session) {
+    return null;
+  }
+
+  const db = await getMongoDb();
+  return db.collection("admin_users").findOne(
+    { _id: session.userId, isActive: true },
+    { projection: { passwordHash: 0 } },
+  );
 }
 
 async function deleteSessionToken(token) {
@@ -61,8 +82,7 @@ async function deleteSessionToken(token) {
 }
 
 async function requireAdmin(request) {
-  const cookies = parseCookies(request.headers.cookie || "");
-  return isSessionTokenValid(cookies[ADMIN_COOKIE_NAME]);
+  return Boolean(await getCurrentAdminUser(request));
 }
 
 module.exports = {
@@ -71,5 +91,8 @@ module.exports = {
   createAdminSession,
   deleteSessionToken,
   findAdminUserByUsername,
+  getAdminSession,
+  getCurrentAdminUser,
+  getSessionTokenFromRequest,
   requireAdmin,
 };

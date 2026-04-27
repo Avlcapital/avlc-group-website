@@ -1,4 +1,5 @@
 const { handleAdminAuthRoutes } = require("./adminRoutes");
+const { handleAdminUsersRoutes } = require("./adminUsersRoutes");
 const { handleAssetRecoveryRoutes } = require("./assetRecoveryRoutes");
 const { handleChatRoutes } = require("./chatRoutes");
 const { handleContactRoutes } = require("./contactRoutes");
@@ -51,6 +52,10 @@ async function routeRequest(request, response) {
   }
 
   if (await handleUpdateRoutes(request, response, pathName, method)) {
+    return;
+  }
+
+  if (await handleAdminUsersRoutes(request, response, pathName, method)) {
     return;
   }
 

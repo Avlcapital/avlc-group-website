@@ -10,7 +10,7 @@ export default function AdminHomePage() {
       <p className="text-sm leading-7 text-slate-700 sm:text-base">
         Use the publisher tools to manage live website updates and respond to visitor chats from the contact page.
       </p>
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <Link
           href="/admin/updates"
           className="rounded-2xl border border-[var(--avlc-slate-200)] bg-slate-50 p-5 transition hover:border-[var(--avlc-primary)] hover:bg-white"
@@ -34,6 +34,14 @@ export default function AdminHomePage() {
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--avlc-navy-700)]">PSL Capital</p>
           <h2 className="mt-2 text-2xl text-[var(--avlc-navy-900)]">Guarantee Requests</h2>
           <p className="mt-2 text-sm leading-6 text-slate-700">View submitted guarantee requests and update review status.</p>
+        </Link>
+        <Link
+          href="/admin/users"
+          className="rounded-2xl border border-[var(--avlc-slate-200)] bg-slate-50 p-5 transition hover:border-[var(--avlc-primary)] hover:bg-white"
+        >
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--avlc-navy-700)]">Access</p>
+          <h2 className="mt-2 text-2xl text-[var(--avlc-navy-900)]">Admin Users</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-700">Review existing admin accounts and create new ones.</p>
         </Link>
       </div>
       <div>

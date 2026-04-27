@@ -38,10 +38,11 @@ loadEnvFile(path.join(root, "..", ".env.local"));
 loadEnvFile(path.join(root, ".env"));
 loadEnvFile(path.join(root, ".env.local"));
 
-const [usernameArg, passwordArg, roleArg] = process.argv.slice(2);
+const [usernameArg, passwordArg, thirdArg, fourthArg] = process.argv.slice(2);
 
 if (!usernameArg || !passwordArg) {
-  console.error("Usage: npm run admin:create-user -- <username> <password> [role]");
+  console.error("Usage: npm run admin:create-user -- <username> <password> [role] [email]");
+  console.error("   or: npm run admin:create-user -- <username> <password> <email>");
   process.exit(1);
 }
 
@@ -58,8 +59,21 @@ if (!normalizedUri.startsWith("mongodb://") && !normalizedUri.startsWith("mongod
   process.exit(1);
 }
 
-const role = roleArg === "editor" ? "editor" : "super_admin";
 const username = usernameArg.trim().toLowerCase();
+const possibleRole = thirdArg === "editor" || thirdArg === "super_admin" ? thirdArg : fourthArg;
+const role = possibleRole === "editor" ? "editor" : "super_admin";
+const possibleEmail = thirdArg && thirdArg.includes("@") ? thirdArg : fourthArg;
+const email = String(possibleEmail || "").trim().toLowerCase();
+
+if (!email) {
+  console.error("Admin email is required so chat notifications can be delivered.");
+  process.exit(1);
+}
+
+if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  console.error("A valid admin email address is required.");
+  process.exit(1);
+}
 
 const client = new MongoClient(normalizedUri, {
   family: 4,
@@ -75,10 +89,15 @@ try {
   const users = db.collection("admin_users");
 
   await users.createIndex({ username: 1 }, { unique: true });
+  await users.createIndex({ email: 1 }, { unique: true, sparse: true });
 
-  const existing = await users.findOne({ username });
-  if (existing) {
+  const existing = await users.findOne({ $or: [{ username }, { email }] });
+  if (existing?.username === username) {
     console.error(`Admin user '${username}' already exists.`);
+    process.exit(1);
+  }
+  if (existing?.email === email) {
+    console.error(`Admin email '${email}' already exists.`);
     process.exit(1);
   }
 
@@ -87,14 +106,14 @@ try {
 
   await users.insertOne({
     username,
+    email,
     passwordHash,
     role,
     isActive: true,
     createdAt: now,
     updatedAt: now,
   });
-
-  console.log(`Admin user '${username}' created with role '${role}'.`);
+  console.log(`Admin user '${username}' created with role '${role}' and email '${email}'.`);
 } finally {
   await client.close();
 }
