@@ -1,6 +1,6 @@
 const { ObjectId } = require("mongodb");
 const { getMongoDb } = require("../middleware/db");
-const { assertEmailConfigured, createTransporter } = require("../middleware/email");
+const { assertEmailConfigured, createTransporter, missingEmailEnv } = require("../middleware/email");
 
 function parseObjectId(id) {
   return ObjectId.isValid(id) ? new ObjectId(id) : null;
@@ -12,6 +12,69 @@ async function getChatCollections() {
     sessions: db.collection("chat_sessions"),
     messages: db.collection("chat_messages"),
   };
+}
+
+function getPreferredFrontendOrigin() {
+  const configuredOrigins = String(process.env.FRONTEND_ORIGIN || "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
+  return configuredOrigins.find((origin) => origin.startsWith("https://")) || configuredOrigins[0] || "http://localhost:3000";
+}
+
+function getAdminChatInboxUrl() {
+  return `${getPreferredFrontendOrigin().replace(/\/+$/, "")}/admin/chat`;
+}
+
+async function getActiveAdminNotificationEmails() {
+  const db = await getMongoDb();
+  const admins = await db
+    .collection("admin_users")
+    .find(
+      {
+        isActive: true,
+        email: { $type: "string", $ne: "" },
+      },
+      { projection: { email: 1 } },
+    )
+    .toArray();
+
+  return [...new Set(admins.map((admin) => String(admin.email || "").trim().toLowerCase()).filter(Boolean))];
+}
+
+async function notifyAdminsOfVisitorChat(session, body) {
+  const missingConfig = missingEmailEnv();
+  if (missingConfig.length > 0) {
+    console.warn(`Skipping admin chat notification email. Missing config: ${missingConfig.join(", ")}`);
+    return;
+  }
+
+  const recipients = await getActiveAdminNotificationEmails();
+  if (!recipients.length) {
+    console.warn("Skipping admin chat notification email. No active admin user emails are configured.");
+    return;
+  }
+
+  await createTransporter().sendMail({
+    from: process.env.SMTP_FROM || process.env.SMTP_USER,
+    to: process.env.SMTP_FROM || process.env.SMTP_USER,
+    bcc: recipients.join(", "),
+    replyTo: session.visitorEmail,
+    subject: `New website chat from ${session.visitorName}`,
+    text: [
+      "A new visitor chat message needs attention.",
+      "",
+      `Visitor: ${session.visitorName}`,
+      `Email: ${session.visitorEmail}`,
+      `Session ID: ${session._id ? session._id.toHexString() : session.id}`,
+      "",
+      "Message:",
+      body,
+      "",
+      `Open admin chat inbox: ${getAdminChatInboxUrl()}`,
+    ].join("\n"),
+  });
 }
 
 function serializeMessage(message) {
@@ -39,7 +102,7 @@ function serializeSession(session, lastMessagePreview) {
 }
 
 async function createChatSession(visitorName, visitorEmail, initialMessage) {
-  const { sessions, messages } = await getChatCollections();
+  const { sessions } = await getChatCollections();
   const now = new Date();
   const sessionId = new ObjectId();
 
@@ -55,13 +118,7 @@ async function createChatSession(visitorName, visitorEmail, initialMessage) {
     lastMessageAt: now,
   });
 
-  await messages.insertOne({
-    _id: new ObjectId(),
-    sessionId,
-    sender: "visitor",
-    body: initialMessage,
-    createdAt: now,
-  });
+  await addChatMessage(sessionId.toHexString(), "visitor", initialMessage);
 
   const session = await getChatSessionDetails(sessionId.toHexString(), "visitor");
   if (!session) {
@@ -96,6 +153,14 @@ async function addChatMessage(sessionId, sender, body) {
       },
     },
   );
+
+  if (sender === "visitor") {
+    try {
+      await notifyAdminsOfVisitorChat({ ...session, _id: id }, body);
+    } catch (error) {
+      console.error("Failed to send admin chat notification email.", error);
+    }
+  }
 
   return serializeMessage({ _id: messageId, sessionId: id, sender, body, createdAt: now });
 }
