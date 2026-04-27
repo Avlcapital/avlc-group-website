@@ -12,37 +12,37 @@ type ProductCard = {
 const productCards: ProductCard[] = [
   {
     name: "ASSET RECOVERY",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/istockphoto-1198189076-612x612-1.jpg?resize=158%2C59",
+    logo: "/assets/patented-products/asset-recovery.jpg",
     summary:
       "A structured recovery and reunification service that helps clients reclaim eligible assets through a guided process.",
   },
   {
     name: "CHILD GUARD",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/Child-Guard-Logo.jpg?fit=185%2C118&ssl=1",
+    logo: "/assets/patented-products/child-guard.jpg",
     summary:
       "Emergency-response cover for children delivered through specialized medical and insurance partnerships.",
   },
   {
     name: "LIFESTYLE LADY",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/Lifestyle-Lady-Logo.jpg?fit=194%2C126&ssl=1",
+    logo: "/assets/patented-products/lifestyle-lady.jpg",
     summary:
       "A modern insurance proposition designed around lifestyle risks, valuables protection, and partner benefits.",
   },
   {
     name: "PESA NA PESA",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/08/Pesa-na-Pesa-Logo.jpg?fit=233%2C148&ssl=1",
+    logo: "/assets/patented-products/pesa-na-pesa.jpg",
     summary:
       "A mobile utility financing platform that gives approved customers instant access to small utility limits directly from their phones.",
   },
   {
     name: "BIMA HIMA",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/09/IMG-20210924-WA0001.jpg?fit=628%2C218&ssl=1",
+    logo: "/assets/patented-products/bima-hima.jpg",
     summary:
       "An installment-based insurance premium support platform built to make cover more affordable and manageable.",
   },
   {
     name: "LANDBANK SOLUTION",
-    logo: "https://i0.wp.com/www.avlc-group.com/wp-content/uploads/2021/07/AVLCGLOBAL.png?fit=500%2C200&ssl=1",
+    logo: "/assets/branding/avlc-logo.png",
     summary:
       "A consultative structuring solution that helps unlock land and asset-backed security for business growth.",
   },
