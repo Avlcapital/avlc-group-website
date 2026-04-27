@@ -1,5 +1,5 @@
-const DEFAULT_API_BASE_URL = "http://localhost:4000";
-//const DEFAULT_API_BASE_URL = "https://avlc-group-website-backend.onrender.com";
+//const DEFAULT_API_BASE_URL = "http://localhost:4000";
+const DEFAULT_API_BASE_URL = "https://avlc-group-website-backend.onrender.com";
 
 export function getApiBaseUrl(): string {
   return (process.env.NEXT_PUBLIC_API_BASE_URL || DEFAULT_API_BASE_URL).replace(/\/+$/, "");
