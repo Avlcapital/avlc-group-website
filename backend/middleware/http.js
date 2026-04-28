@@ -1,4 +1,4 @@
-const DEFAULT_FRONTEND_ORIGINS = ["http://localhost:3000", "https://avlc-group-website.vercel.app","https://www.avlcapital.com"];
+const DEFAULT_FRONTEND_ORIGINS = ["http://localhost:3000", "https://avlc-group-website.vercel.app","https://www.avlcapital.com","https://www.avlc-group.com/"];
 
 function getAllowedOrigins() {
   return [...DEFAULT_FRONTEND_ORIGINS, ...(process.env.FRONTEND_ORIGIN || "")
